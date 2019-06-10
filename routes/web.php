@@ -14,7 +14,12 @@
 //Auth::routes();
 
 Route::get( '/', 'PageController@index' )->name( 'home' );
-Route::get( '/login', 'UserController@login' )->name( 'login' );
+Route::get( '/login', 'ManageController@login' )->name( 'login' );
+
+Route::get( 'password/reset/{token}', 'Auth\ResetPasswordController@getReset' );
+Route::post( 'password/reset', 'Auth\ResetPasswordController@postReset' )->name( 'password.request' );
+
+Auth::routes();
 
 
 Route::prefix( 'manage' )->group( function () {
