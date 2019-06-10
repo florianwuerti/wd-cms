@@ -1,0 +1,51 @@
+.side-menu {
+  position: fixed;
+  height: 100vh;
+  width: 200px;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+#admin-side-menu {
+  position: absolute;
+  //top: 4em;
+  padding-top: 4em;
+  bottom: 0;
+  width: 200px;
+  background-color: white;
+  overflow-y: scroll;
+  transition: left 0.3s ease-in-out;
+
+  &.is-active {
+    transition: left 0.3s ease-in-out;
+    left: 0;
+  }
+
+  @include desktop {
+    left: 0;
+
+  }
+
+}
+
+.management-area {
+  position: absolute;
+  top: 4rem;
+  left: 200px;
+  right: 0;
+}
+
+.flex-container {
+  margin: 10px 25px;
+}
+
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.menu-list li ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}

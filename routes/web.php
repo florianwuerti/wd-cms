@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Auth::routes();
+
+Route::get( '/', 'PageController@index' )->name( 'home' );
+Route::get( '/login', 'UserController@login' )->name( 'login' );
+
+
+Route::prefix( 'manage' )->group( function () {
+
+	Route::get( '/', 'ManageController@index' );
+	Route::get( '/dashboard', 'ManageController@index' )->name( 'manage.dashboard' );
+	Route::get( '/logout', 'UserController@logout' )->name( 'manage.logout' );
+
+	Route::resource( '/users', 'UserController' );
+	//Route::resource( '/posts', 'PostController' );
+
+} );

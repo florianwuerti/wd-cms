@@ -40,7 +40,7 @@
 
                 <div class="navbar-end nav-menu" style="overflow: visible">
                     @guest
-                        <a href="#" class="navbar-item is-tab">Login</a>
+                        <a href="{{route('manage.login')}}" class="navbar-item is-tab">Login</a>
                         <a href="#" class="navbar-item is-tab">Join the Community</a>
                     @else
                         <div class="navbar-item has-dropdown is-hoverable">
