@@ -1,3 +1,15 @@
 /* ========================================
    ============ Text Overrides ===========
    ======================================== */
+
+.button, .input {
+  border-radius: 0;
+}
+
+.has-addons {
+  .input {
+    box-shadow: none;
+    border-color: transparent;
+  }
+
+}

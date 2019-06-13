@@ -19,10 +19,6 @@ class ManageController extends Controller {
 		return view( 'manage.dashboard' );
 	}
 
-	public function dashboard() {
-		return view( 'manage.dashboard' );
-	}
-
 	public function login() {
 		return view( 'auth.login' );
 	}

@@ -12,45 +12,41 @@
         </p>
         <ul class="menu-list">
 
-            <li><a href="#" class="has-submenu">Beiträge</a>
+            <li><a href="#" class="has-submenu">Posts</a>
                 <ul class="submenu">
-                    <li><a href="#" class="">Alle Benutzer</a></li>
-                    <li><a href="#" class="">Neuer Benutzer hinzufügen</a></li>
-                    <li><a href="#" class="">Dein Profil</a></li>
+                    <li><a href="#" class="">All Posts</a></li>
+                    <li><a href="#" class="">Add new Post</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="has-submenu">Seiten</a>
+            <li><a href="#" class="has-submenu">Pages</a>
                 <ul class="submenu">
-                    <li><a href="#" class="">Alle Benutzer</a></li>
-                    <li><a href="#" class="">Neuer Benutzer hinzufügen</a></li>
-                    <li><a href="#" class="">Dein Profil</a></li>
+                    <li><a href="#" class="">All Pages</a></li>
+                    <li><a href="#" class="">Add new Page</a></li>
                 </ul>
             </li>
         </ul>
 
         <p class="menu-label">
-            Benutzer
+            Users
         </p>
         <ul class="menu-list">
             <li>
-                <a class="has-submenu">Benutzer</a>
+                <a class="has-submenu">Users</a>
                 <ul class="submenu">
-                    <li><a href="#" class="">Alle Benutzer</a></li>
-                    <li><a href="#" class="">Neuer Benutzer hinzufügen</a></li>
-                    <li><a href="#" class="">Dein Profil</a></li>
+                    <li><a href="{{route('users.index')}}" class="">All Users</a></li>
+                    <li><a href="{{route('users.create')}}" class="">Add new User</a></li>
+                    <li><a href="{{route('users.edit' , Auth::user()->id)}}" class="">Your Profile</a></li>
                 </ul>
             </li>
         </ul>
         <p class="menu-label">
-            Einstellungen
+            Seetings
         </p>
         <ul class="menu-list">
             <li>
-                <a class="has-submenu ">Einstellungen</a>
+                <a class="has-submenu ">Settings</a>
                 <ul class="submenu">
-                    <li><a href="#" class="">Allgemein</a></li>
-                    <li><a href="#"
-                           class="">Permissions</a></li>
+                    <li><a href="#" class="">General</a></li>
                 </ul>
             </li>
         </ul>

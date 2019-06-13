@@ -49,3 +49,17 @@
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.is-button-style {
+  border-color: transparent;
+  background-color: white;
+  justify-content: center;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  padding-top: calc(0.375em - 1px);
+  height: 2.25em;
+  border-right-color: $button-border-color;
+  border-right-width: 1px;
+  border-right-style: solid;
+}

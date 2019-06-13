@@ -28,7 +28,10 @@ Route::prefix( 'manage' )->group( function () {
 	Route::get( '/dashboard', 'ManageController@index' )->name( 'manage.dashboard' );
 	Route::get( '/logout', 'UserController@logout' )->name( 'manage.logout' );
 
+	// User
 	Route::resource( '/users', 'UserController' );
+
+	// Post
 	//Route::resource( '/posts', 'PostController' );
 
 } );

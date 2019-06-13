@@ -1688,6 +1688,121 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/changeUserPassword.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/changeUserPassword.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    size: {
+      type: String,
+      "default": '10'
+    },
+    characters: {
+      type: String,
+      "default": 'a-z,A-Z,0-9,#'
+    },
+    placeholder: {
+      type: String,
+      "default": 'New Password'
+    },
+    auto: [String, Boolean] //value: ''
+
+  },
+  data: function data() {
+    return {
+      isHidden: false,
+      password: this.value,
+      passwordFieldType: 'text'
+    };
+  },
+  mounted: function mounted() {
+    if (this.auto === 'true' || this.auto === 1) {
+      this.generate();
+    }
+  },
+  methods: {
+    generate: function generate() {
+      var charactersArray = this.characters.split(',');
+      var CharacterSet = '';
+      var password = '';
+
+      if (charactersArray.indexOf('a-z') >= 0) {
+        CharacterSet += 'abcdefghijklmnopqrstuvwxyz';
+      }
+
+      if (charactersArray.indexOf('A-Z') >= 0) {
+        CharacterSet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      }
+
+      if (charactersArray.indexOf('0-9') >= 0) {
+        CharacterSet += '0123456789';
+      }
+
+      if (charactersArray.indexOf('#') >= 0) {
+        CharacterSet += '![]{}()%&*$#^<>~@|';
+      }
+
+      for (var i = 0; i < this.size; i++) {
+        password += CharacterSet.charAt(Math.floor(Math.random() * CharacterSet.length));
+      }
+
+      this.password = password;
+    },
+    showPassword: function showPassword() {
+      this.passwordFieldType = this.passwordFieldType === 'text' ? 'password' : 'text';
+    },
+    switchVisibility: function switchVisibility() {
+      this.password = '';
+      this.isHidden = false;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -51644,6 +51759,310 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/changeUserPassword.vue?vue&type=template&id=525e11e1&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/changeUserPassword.vue?vue&type=template&id=525e11e1& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    !_vm.isHidden
+      ? _c("div", { staticClass: "field is-horizontal m-t-20" }, [
+          _c(
+            "button",
+            {
+              staticClass: "button is-info",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  _vm.isHidden = true
+                }
+              }
+            },
+            [_vm._v("Generate Password\n        ")]
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isHidden
+      ? _c("div", { staticClass: "field has-addons has-addons-left m-t-20" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("p", { staticClass: "control" }, [
+            _vm.passwordFieldType === "checkbox"
+              ? _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password,
+                      expression: "password"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    name: "new_password",
+                    id: "new_password",
+                    placeholder: _vm.placeholder,
+                    type: "checkbox"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.password)
+                      ? _vm._i(_vm.password, null) > -1
+                      : _vm.password
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.password,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.password = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.password = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.password = $$c
+                      }
+                    }
+                  }
+                })
+              : _vm.passwordFieldType === "radio"
+              ? _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password,
+                      expression: "password"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    name: "new_password",
+                    id: "new_password",
+                    placeholder: _vm.placeholder,
+                    type: "radio"
+                  },
+                  domProps: { checked: _vm._q(_vm.password, null) },
+                  on: {
+                    change: function($event) {
+                      _vm.password = null
+                    }
+                  }
+                })
+              : _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password,
+                      expression: "password"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    name: "new_password",
+                    id: "new_password",
+                    placeholder: _vm.placeholder,
+                    type: _vm.passwordFieldType
+                  },
+                  domProps: { value: _vm.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.password = $event.target.value
+                    }
+                  }
+                })
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "control" }, [
+            _c(
+              "button",
+              {
+                staticClass: "button is-info",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.generate()
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fa fa-refresh" })]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "button m-l-5",
+              attrs: { type: "button" },
+              on: { click: _vm.showPassword }
+            },
+            [
+              _c("i", { staticClass: "fa fa-eye-slash m-r-5" }),
+              _vm._v("Hide\n        ")
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "button m-l-5",
+              attrs: { type: "button" },
+              on: { click: _vm.switchVisibility }
+            },
+            [_vm._v("Cancel")]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "is-button-style" }, [
+      _c("p", { staticClass: "control" }, [
+        _c("span", { staticClass: "input-group-addon" }, [
+          _c("i", { staticClass: "fa fa-lock" })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/vue/dist/vue.common.dev.js":
 /*!*************************************************!*\
   !*** ./node_modules/vue/dist/vue.common.dev.js ***!
@@ -63682,17 +64101,27 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var buefy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! buefy */ "./node_modules/buefy/dist/buefy.js");
-/* harmony import */ var buefy__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(buefy__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var buefy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! buefy */ "./node_modules/buefy/dist/buefy.js");
+/* harmony import */ var buefy__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(buefy__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_changeUserPassword_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/changeUserPassword.vue */ "./resources/js/components/changeUserPassword.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./manage */ "./resources/js/manage.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
-Vue.use(buefy__WEBPACK_IMPORTED_MODULE_0___default.a);
-var app = new Vue({
-  el: '#app'
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('changeuserpassword', _components_changeUserPassword_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(buefy__WEBPACK_IMPORTED_MODULE_1___default.a);
+new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+  el: '#app',
+  data: {
+    auto_password: true,
+    password_options: 'keep'
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -63752,6 +64181,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/changeUserPassword.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/changeUserPassword.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _changeUserPassword_vue_vue_type_template_id_525e11e1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./changeUserPassword.vue?vue&type=template&id=525e11e1& */ "./resources/js/components/changeUserPassword.vue?vue&type=template&id=525e11e1&");
+/* harmony import */ var _changeUserPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./changeUserPassword.vue?vue&type=script&lang=js& */ "./resources/js/components/changeUserPassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _changeUserPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _changeUserPassword_vue_vue_type_template_id_525e11e1___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _changeUserPassword_vue_vue_type_template_id_525e11e1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/changeUserPassword.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/changeUserPassword.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/changeUserPassword.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_changeUserPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./changeUserPassword.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/changeUserPassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_changeUserPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/changeUserPassword.vue?vue&type=template&id=525e11e1&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/changeUserPassword.vue?vue&type=template&id=525e11e1& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_changeUserPassword_vue_vue_type_template_id_525e11e1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./changeUserPassword.vue?vue&type=template&id=525e11e1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/changeUserPassword.vue?vue&type=template&id=525e11e1&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_changeUserPassword_vue_vue_type_template_id_525e11e1___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_changeUserPassword_vue_vue_type_template_id_525e11e1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
