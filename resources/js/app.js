@@ -4,9 +4,11 @@ require('./manage');
 import Vue from 'vue';
 import Buefy from 'buefy';
 import changeUserPassword from './components/changeUserPassword.vue';
+import imgUpload from './components/imgUpload.vue';
 
 
 Vue.component('changeuserpassword', changeUserPassword);
+Vue.component('imgupload', imgUpload);
 
 Vue.use(Buefy);
 

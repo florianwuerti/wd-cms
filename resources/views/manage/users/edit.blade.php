@@ -38,6 +38,7 @@
                     </div>
 
                     <changeuserpassword></changeuserpassword>
+                    <imgupload></imgupload>
 
                 </div> <!-- end of .column -->
             </div>
