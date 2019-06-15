@@ -32,6 +32,9 @@ Route::prefix( 'manage' )->group( function () {
 	Route::resource( '/users', 'UserController' );
 
 	// Post
-	//Route::resource( '/posts', 'PostController' );
+	Route::resource( '/posts', 'PostController' );
+
+	// Pages
+	Route::resource( '/pages', 'PageController' );
 
 } );

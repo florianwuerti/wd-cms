@@ -45,7 +45,7 @@
                             </b-checkbox>
                         </div>
                     </div><!-- end of password field -->
-                    <button class="button is-success"><i class="fas fa-user-plus m-r-10"></i> Create User</button>
+                    <button class="button is-link"><i class="fas fa-user-plus m-r-10"></i> Create User</button>
                 </form>
             </div>
         </div>
