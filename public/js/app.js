@@ -1829,7 +1829,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
@@ -51969,7 +51968,7 @@ var render = function() {
                   }
                 }
               },
-              [_c("i", { staticClass: "fa fa-refresh" })]
+              [_c("i", { staticClass: "fas fa-sync" })]
             )
           ]),
           _vm._v(" "),
@@ -51981,7 +51980,7 @@ var render = function() {
               on: { click: _vm.showPassword }
             },
             [
-              _c("i", { staticClass: "fa fa-eye-slash m-r-5" }),
+              _c("i", { staticClass: "fas fa-eye-slash m-r-5" }),
               _vm._v("Hide\n        ")
             ]
           ),
@@ -52007,7 +52006,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "is-button-style" }, [
       _c("p", { staticClass: "control" }, [
         _c("span", { staticClass: "input-group-addon" }, [
-          _c("i", { staticClass: "fa fa-lock" })
+          _c("i", { staticClass: "fas fa-lock" })
         ])
       ])
     ])
@@ -52034,9 +52033,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "m-t-20 img-upload-wrapper" }, [
-    _c("p", { staticClass: "label" }, [_vm._v("Featured Image")]),
-    _vm._v(" "),
+  return _c("div", { staticClass: "img-upload-wrapper" }, [
     _c("div", { staticClass: "image-input", on: { click: _vm.chooseImage } }, [
       !_vm.imageData
         ? _c("span", { staticClass: "placeholder" }, [
@@ -52047,7 +52044,7 @@ var render = function() {
       _c("input", {
         ref: "fileInput",
         staticClass: "img-file-input",
-        attrs: { id: "img-file-input", name: "img-file-input", type: "file" },
+        attrs: { id: "profile_images", name: "profile_images", type: "file" },
         on: { input: _vm.onSelectFile }
       })
     ]),

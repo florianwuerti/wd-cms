@@ -1,5 +1,9 @@
 <?php
 
+use Barryvdh\Debugbar\ServiceProvider;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Intervention\Image\ImageServiceProvider;
+
 return [
 
     /*
@@ -161,8 +165,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-	    Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -178,6 +180,10 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+	    Barryvdh\Debugbar\ServiceProvider::class,
+	    Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -229,6 +235,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

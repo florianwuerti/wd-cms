@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
 	        $table->unsignedInteger( 'user_status' )->default( 0 );
 	        $table->string('display_name');
+	        $table->string('image')->nullable();
 	        $table->dateTime('registered');
             $table->rememberToken();
             $table->timestamps();

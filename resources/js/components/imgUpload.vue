@@ -1,10 +1,9 @@
 <template>
 
-    <div class="m-t-20 img-upload-wrapper">
-        <p class="label">Featured Image</p>
+    <div class="img-upload-wrapper">
         <div class="image-input" v-on:click="chooseImage">
             <span v-if="!imageData" class="placeholder">Set featured image</span>
-            <input id="img-file-input" name="img-file-input" class="img-file-input" ref="fileInput" type="file"
+            <input id="profile_images" name="profile_images" class="img-file-input" ref="fileInput" type="file"
                    v-on:input="onSelectFile">
         </div>
         <div class="img-input-data-wrapper notification" v-if="imageData">

@@ -10,7 +10,7 @@
 
             <div class="is-button-style">
                 <p class="control">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <span class="input-group-addon"><i class="fas fa-lock"></i></span>
                 </p>
             </div>
             <p class="control">
@@ -21,12 +21,12 @@
 
             <p class="control">
                 <button type="button" class="button is-info" v-on:click="generate()">
-                    <i class="fa fa-refresh"></i>
+                    <i class="fas fa-sync"></i>
                 </button>
             </p>
 
             <button v-on:click="showPassword" type="button" class="button m-l-5"><i
-                    class="fa fa-eye-slash m-r-5"></i>Hide
+                    class="fas fa-eye-slash m-r-5"></i>Hide
             </button>
 
             <button v-on:click="switchVisibility" type="button" class="button m-l-5">Cancel</button>

@@ -8,6 +8,7 @@ use Hash;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class UserController extends Controller {
 
@@ -53,7 +54,7 @@ class UserController extends Controller {
 		$validatedData = $request->validate( [
 			'first_name' => 'required|max:255',
 			'last_name'  => 'required|max:255',
-			'email'      => 'required|email|unique:users'
+			'email'      => 'required|email|unique:users',
 		] );
 
 		if ( ! empty( $request->password ) ) {
@@ -76,6 +77,7 @@ class UserController extends Controller {
 		$user->registered   = Carbon::now();
 		$user->email        = $request->email;
 		$user->password     = Hash::make( $password );
+
 		$user->save();
 
 		return redirect()->route( 'users.show', $user->id );
@@ -116,26 +118,44 @@ class UserController extends Controller {
 	 * @param \Illuminate\Http\Request $request
 	 * @param int $id
 	 *
+	 * @param $image1
+	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update( Request $request, $id ) {
 
 		$validatedData = $request->validate( [
-			'first_name' => 'required|max:255',
-			'last_name'  => 'required|max:255',
-			'email'      => 'required|email|unique:users,email,' . $id
+			'first_name'     => 'required|max:255',
+			'last_name'      => 'required|max:255',
+			'email'          => 'required|email|unique:users,email,' . $id,
+			'profile_images' => 'image|mimes:jpeg,png,jpg|max:2048'
 
 		] );
 
 		$user             = User::findOrFail( $id );
 		$user->first_name = $request->first_name;
 		$user->last_name  = $request->last_name;
+		$user->display_name = $request->first_name . ' ' . $request->last_name;
 		$user->email      = $request->email;
 
 
 		if ( $request->new_password ) {
 			$user->password = Hash::make( $request->new_password );
 		}
+
+		if ( $request->hasFile( 'profile_images' ) ) {
+
+			// Get image file
+			$image = $request->file( 'profile_images' );
+
+			$filename = $image->getClientOriginalName();
+
+			$location = public_path( '/uploads/images/' . $filename );
+
+			Image::make( $image->getRealPath() )->save( $location );
+
+			$user->image = $filename;
+		};
 
 		if ( $user->save() ) {
 			//session()->flash('', '')
