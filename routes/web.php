@@ -19,6 +19,9 @@ Route::get( '/login', 'ManageController@login' )->name( 'login' );
 Route::get( 'password/reset/{token}', 'Auth\ResetPasswordController@getReset' );
 Route::post( 'password/reset', 'Auth\ResetPasswordController@postReset' )->name( 'password.request' );
 
+// Post
+//Route::get( '/posts/{id}', 'PostController@show' )->name('post.show');
+
 Auth::routes();
 
 
@@ -30,10 +33,8 @@ Route::prefix( 'manage' )->group( function () {
 
 	// User
 	Route::resource( '/users', 'UserController' );
-
 	// Post
 	Route::resource( '/posts', 'PostController' );
-
 	// Pages
 	Route::resource( '/pages', 'PageController' );
 

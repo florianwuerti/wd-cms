@@ -128,7 +128,7 @@ class UserController extends Controller {
 			'first_name'     => 'required|max:255',
 			'last_name'      => 'required|max:255',
 			'email'          => 'required|email|unique:users,email,' . $id,
-			'profile_images' => 'image|mimes:jpeg,png,jpg|max:2048'
+			'profile_images' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
 
 		] );
 

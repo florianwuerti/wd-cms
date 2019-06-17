@@ -1830,11 +1830,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {},
+  props: ['src'],
+  mounted: function mounted() {// Do something useful with the data in the template
+    //console.log(this.src)
+  },
   data: function data() {
     return {
-      imageData: ''
+      imageData: this.src ? this.src : ''
     };
+  },
+  computed: {
+    imgSrc: function imgSrc() {
+      return this.imageData;
+    }
   },
   methods: {
     chooseImage: function chooseImage() {
@@ -52044,7 +52052,7 @@ var render = function() {
       _c("input", {
         ref: "fileInput",
         staticClass: "img-file-input",
-        attrs: { id: "profile_images", name: "profile_images", type: "file" },
+        attrs: { id: "image", name: "image", type: "file" },
         on: { input: _vm.onSelectFile }
       })
     ]),
@@ -52059,7 +52067,7 @@ var render = function() {
           _vm._v(" "),
           _c("img", {
             staticClass: "img-input-data",
-            attrs: { src: _vm.imageData, alt: "" }
+            attrs: { src: _vm.imgSrc, alt: "" }
           })
         ])
       : _vm._e(),
