@@ -17,7 +17,7 @@
 @import '~buefy/src/scss/buefy';
 
 // Custom SASS Pages
-@import "overrides";
-@import "helpers";
-@import "manage";
-@import "styles";
+@import "backend/overrides";
+@import "backend/helpers";
+@import "backend/manage";
+@import "backend/styles";

@@ -35,9 +35,11 @@
         },
 
         computed: {
+
             imgSrc() {
                 return this.imageData
             }
+
         },
 
         methods: {
@@ -75,4 +77,7 @@
 </script>
 
 <style scoped>
+
+
+
 </style>

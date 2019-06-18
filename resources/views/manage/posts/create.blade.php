@@ -1,6 +1,6 @@
 @section('page_title', 'Create Users')
 
-@extends('layouts.manage')
+@extends('layouts.backend')
 
 @section('content')
     <div class="flex-container">

@@ -1,6 +1,6 @@
 @section('page_title', 'Dashboard')
 
-@extends('layouts.manage')
+@extends('layouts.backend')
 
 @section('content')
 
