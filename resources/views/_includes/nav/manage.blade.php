@@ -12,14 +12,14 @@
         </p>
         <ul class="menu-list">
 
-            <li><a href="{{route('posts.index')}}" class="has-submenu {{Nav::hasSegment(['posts'], 2)}}">Posts</a>
+            <li><a class="has-submenu {{Nav::hasSegment(['posts'], 2)}}">Posts</a>
                 <ul class="submenu">
                     <li><a href="{{route('posts.index')}}" class="{{Nav::isRoute('posts.index')}}">All Posts</a></li>
                     <li><a href="{{route('posts.create')}}" class="{{Nav::isRoute('posts.create')}}">Add new Post</a>
                     </li>
                 </ul>
             </li>
-            <li><a href="{{route('pages.index')}}" class="has-submenu" {{Nav::hasSegment(['pages'], 2)}}>Pages</a>
+            <li><a class="has-submenu" {{Nav::hasSegment(['pages'], 2)}}>Pages</a>
                 <ul class="submenu">
                     <li><a href="{{route('pages.index')}}" class="{{Nav::isRoute('pages.index')}}">All Pages</a></li>
                     <li><a href="{{route('pages.index')}}" class="{{Nav::isRoute('pages.create')}}">Add new Page</a>
@@ -33,7 +33,7 @@
         </p>
         <ul class="menu-list">
             <li>
-                <a href="{{route('users.index')}}" class="has-submenu {{Nav::hasSegment(['users'], 2)}}">Users</a>
+                <a class="has-submenu {{Nav::hasSegment(['users'], 2)}}">Users</a>
                 <ul class="submenu">
                     <li><a href="{{route('users.index')}}" class="{{Nav::isRoute('users.index')}}">All Users</a></li>
                     <li><a href="{{route('users.create')}}" class="{{Nav::isRoute('users.create')}}">Add new User</a>
