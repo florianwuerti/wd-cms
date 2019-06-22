@@ -41,7 +41,7 @@ class User extends Authenticatable {
 
 	public function posts() {
 
-		return $this->belongsTo( Post::Class, 'author_id' );
+		return $this->hasMany( Post::Class );
 
 	}
 

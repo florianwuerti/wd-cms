@@ -27,7 +27,13 @@
                 <a href="{{route('register')}}" class="navbar-item is-tab">Join the Community</a>
             @else
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">{{Auth::user()->first_name}}</a>
+                    <a class="navbar-link">
+                        @if(Auth::user()->image)
+                            <img src="{{asset('/uploads/images/'. Auth::user()->image)}}" class="m-r-5 is-rounded"
+                                 alt=""/>
+                        @endif
+                        {{Auth::user()->first_name}}
+                    </a>
                     <div class="navbar-dropdown is-right">
                         <a href="{{route('users.show' , Auth::user()->id)}}" class="navbar-item"><span class="icon"><i
                                         class="fa fa-fw fa-user-circle-o m-r-5"></i></span>Profile</a>

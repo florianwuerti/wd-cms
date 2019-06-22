@@ -6,7 +6,7 @@
     <div class="flex-container">
         <div class="columns m-t-10">
             <div class="column">
-                <h1 class="title">Edit Post {{ $post->id }}</h1>
+                <h1 class="title">Edit Post</h1>
             </div>
         </div>
         <hr class="m-t-0">
@@ -36,8 +36,7 @@
                         @if(!$post->post_thumbnail)
                             <imgupload></imgupload>
                         @else
-                            <imgupload
-                                    v-bind:src="{{json_encode(asset('/uploads/images/' . $post->post_thumbnail ))}}"></imgupload>
+                            <imgupload v-bind:src="{{json_encode(asset('/uploads/images/' . $post->post_thumbnail ))}}"></imgupload>
                         @endif
                     </div><!-- end of email field -->
 

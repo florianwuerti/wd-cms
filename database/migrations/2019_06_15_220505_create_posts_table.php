@@ -22,12 +22,17 @@ class CreatePostsTable extends Migration {
 			$table->unsignedInteger( 'post_status' )->default( 1 );
 			$table->string( 'post_type' );
 			$table->bigInteger( 'comment_count' )->unsigned()->nullable();
+			$table->boolean( 'is_featured' )->default( '0' );
+			$table->unsignedInteger( 'post_views' )->default(0);
+			$table->dateTime( 'publish_at' )->nullable();
 			$table->dateTime( 'published_at' );
 			$table->timestamps();
+			$table->softDeletes();
 
-			$table->foreign('author_id')
-			      ->references('id')->on('users')
-			      ->onDelete('cascade');		} );
+			$table->foreign( 'author_id' )
+			      ->references( 'id' )->on( 'users' )
+			      ->onDelete( 'cascade' );
+		} );
 	}
 
 	/**

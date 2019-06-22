@@ -70,21 +70,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($posts as $post)
+                    @foreach($postsTrash as $postTrash)
 
                         <tr draggable="false" class=""><!----> <!---->
                             <td class="">
-                                <a href="{{route('posts.edit', $post->id)}}">
-                                    <span>{{$post->post_title}}</span>
+                                <a href="{{route('posts.edit', $postTrash->id)}}">
+                                    <span>{{$postTrash->post_title}}</span>
 
-                                    @if($post->post_status == 1)
+                                    @if($postTrash->post_status == 1)
                                         <span class="tag is-dark">Draft</span>
                                     @endif
 
                                 </a>
                             </td>
                             <td>
-                                <span>{{$post->author->display_name}}</span>
+                                <span>{{$postTrash->author->display_name}}</span>
                             </td>
                             <td>
                             <span>
@@ -103,7 +103,7 @@
                             </td>
                             <td data-label="Date">
                                 <span>
-                                    @if($post->post_status === 1 ? 'entwurf' : '')
+                                    @if($postTrash->post_status === 1 ? 'entwurf' : '')
                                         <span>Published <br> 2019/04/10 <br> 8:42:56 pm</span>
                                     @else
                                         <span>Last Modified <br> 2019/04/04 <br> 8:20:41 am</span>
@@ -111,9 +111,9 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="{{route('posts.edit', $post->id)}}" class=""><i class="fas fa-edit"></i><span class="is-hidden">Edit</span></a>
-                                <a href="{{route('posts.show', $post->id)}}" class=""><i class="far fa-eye"></i><span class="is-hidden">View</span></a>
-                                <a href="{{route('posts.totrash', $post->id)}}"><i class="far fa-trash-alt"></i><span class="is-hidden">Delete</span></a>
+                                <a href="{{route('posts.edit', $postTrash->id)}}" class=""><i class="fas fa-edit"></i><span class="is-hidden">Edit</span></a>
+                                <a href="{{route('posts.show', $postTrash->id)}}" class=""><i class="far fa-eye"></i><span class="is-hidden">View</span></a>
+                                <a href="{{route('posts.totrash', $postTrash->id)}}"><i class="fas fa-backspace"></i><span class="is-hidden">Delete</span></a>
                             </td>
                         </tr>
                     @endforeach
@@ -122,6 +122,6 @@
             </div>
         </div>
 
-        {{$posts->links('vendor.pagination.default')}}
+        {{$postsTrash->links('vendor.pagination.default')}}
     </div>
 @endsection

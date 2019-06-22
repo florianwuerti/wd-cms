@@ -33,8 +33,15 @@ Route::prefix( 'manage' )->group( function () {
 
 	// User
 	Route::resource( '/users', 'UserController' );
+
+	Route::get( '/posts/{id}/trash', 'PostController@toTrash' )->name( 'posts.totrash' );
+	Route::get( '/posts/drafts', 'PostController@drafts' )->name( 'posts.drafst' );
+	Route::get( '/posts/trash', 'PostController@trash' )->name( 'posts.trash' );
+	Route::get( '/posts/published', 'PostController@published' )->name( 'posts.published' );
+
 	// Post
 	Route::resource( '/posts', 'PostController' );
+
 	// Pages
 	Route::resource( '/pages', 'PageController' );
 

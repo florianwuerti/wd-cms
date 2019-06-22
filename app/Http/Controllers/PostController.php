@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Auth;
-use Session;
+use DB;
+
+//use User;
 
 class PostController extends Controller {
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -17,9 +21,19 @@ class PostController extends Controller {
 	 */
 	public function index() {
 
+		$users = User::all();
+
+		$authUser = User::find( Auth::user()->id );
+
 		$posts = Post::orderBy( 'id', 'desc' )->paginate( 20 );
 
-		return view( 'manage.posts.index', compact( 'posts' ) );
+		$authUserPost = Post::where( 'author_id', $authUser->id );
+
+		$postsPublished = $this->showAllPublishedPosts();
+		$postsTrash   = $this->postsInTrash();
+		$postsDrafts  = $this->postsInDrafts();
+
+		return view( 'manage.posts.index', compact( 'posts', 'users', 'authUserPost', 'postsPublished', 'postsTrash', 'postsDrafts' ) );
 	}
 
 	/**
@@ -42,7 +56,7 @@ class PostController extends Controller {
 
 		$validatedData = $request->validate( [
 			'post_title'     => 'required|min:5|max:255',
-			'post_content'   => 'required|min:5|max:255',
+			'post_content'   => 'required|min:5',
 			'post_thumbnail' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
 		] );
 
@@ -114,7 +128,7 @@ class PostController extends Controller {
 
 		$validatedData = $request->validate( [
 			'post_title'   => 'required|max:255',
-			'post_content' => 'max:255',
+			'post_content' => 'required|min:5',
 			'image'        => 'image|mimes:jpeg,png,jpg,svg|max:2048'
 
 		] );
@@ -150,6 +164,107 @@ class PostController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy( $id ) {
+
 		//
+
 	}
+
+	public function drafts() {
+
+		$users = User::all();
+
+		$authUser = User::find( Auth::user()->id );
+
+		$posts = Post::where( 'deleted_at' );
+
+		$postsDrafts = Post::where( 'post_status', '1' )->orderBy( 'id', 'desc' )->paginate( 20 );
+
+		$authUserPost = Post::where( 'author_id', $authUser->id );
+
+		$postsPublished = $this->showAllPublishedPosts();
+
+		$postsTrash = $this->postsInTrash();
+
+
+		return view( 'manage.posts.drafts', compact( 'postsDrafts', 'posts', 'authUserPost', 'postsPublished', 'users', 'postsTrash' ) );
+	}
+
+
+	public function trash() {
+
+		$postsTrash = Post::onlyTrashed()->orderBy( 'id', 'desc' )->paginate( 20 );
+		$posts      = Post::whereNull( 'deleted_at' );
+
+		$authUser     = User::find( Auth::user()->id );
+		$authUserPost = Post::where( 'author_id', $authUser->id );
+
+		$postsPublished = $this->showAllPublishedPosts();
+		$postsDrafts  = $this->postsInDrafts();
+
+
+		return view( 'manage.posts.trash', compact( 'postsTrash', 'posts', 'authUserPost', 'postsPublished', 'postsDrafts' ) );
+
+	}
+
+	public function published() {
+
+		$users = User::all();
+
+		$authUser = User::find( Auth::user()->id );
+
+		$posts = Post::where( 'deleted_at' );
+
+		$postsDrafts = Post::where( 'post_status', '1' )->orderBy( 'id', 'desc' )->paginate( 20 );
+
+		$authUserPost = Post::where( 'author_id', $authUser->id );
+
+		$postsPublished = $this->showAllPublishedPosts();
+
+		$postsTrash = $this->postsInTrash();
+
+		return view( 'manage.posts.published', compact( 'postsTrash', 'posts', 'authUserPost', 'postsPublished', 'postsDrafts', 'users', 'postsTrash' ) );
+
+	}
+
+	public function toTrash( $id ) {
+
+		$post = Post::where('id',$id)->first();
+
+		$post->delete();
+
+		$post->save;
+
+		return redirect()->route( 'posts.index' );
+
+	}
+
+	public function showAllPublishedPosts() {
+
+		$posts = Post::where( 'post_status', 3 )->get();
+
+		$posts->published = $posts;
+
+		return $posts->published;
+	}
+
+	public function postsInTrash() {
+
+		$posts = Post::onlyTrashed()->get();
+
+		$posts->trash = $posts;
+
+		return $posts->trash;
+	}
+
+	public function postsInDrafts() {
+
+		$posts = Post::where( 'post_status', '1' )->get();
+
+		$posts->drafts = $posts;
+
+		return $posts->drafts;
+
+	}
+
+
 }

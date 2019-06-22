@@ -33,8 +33,10 @@
                 </div>
 
                 <div class="img-input-data-wrapper">
-                    <p class="label m-t-20">Profile Picture</p>
-                    <img src="{{asset('/uploads/images/'. $user->image)}}" class="img-input-data" alt=""/>
+                    @if($user->image)
+                        <p class="label m-t-20">Profile Picture</p>
+                        <img src="{{asset('/uploads/images/'. $user->image)}}" class="img-input-data" alt=""/>
+                    @endif
                 </div>
             </div> <!-- end of .column -->
         </div>

@@ -128,7 +128,7 @@ class UserController extends Controller {
 			'first_name'     => 'required|max:255',
 			'last_name'      => 'required|max:255',
 			'email'          => 'required|email|unique:users,email,' . $id,
-			'profile_images' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
+			'image' => 'image|mimes:jpeg,png,jpg|max:2048'
 
 		] );
 
@@ -143,10 +143,10 @@ class UserController extends Controller {
 			$user->password = Hash::make( $request->new_password );
 		}
 
-		if ( $request->hasFile( 'profile_images' ) ) {
+		if ( $request->hasFile( 'image' ) ) {
 
 			// Get image file
-			$image = $request->file( 'profile_images' );
+			$image = $request->file( 'image' );
 
 			$filename = $image->getClientOriginalName();
 

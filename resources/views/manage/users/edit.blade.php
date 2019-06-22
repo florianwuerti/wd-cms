@@ -47,8 +47,11 @@
                     <changeuserpassword></changeuserpassword>
 
                     <p class="label m-t-20">Profile Picture</p>
-                    <imgupload></imgupload>
-
+                    @if(!$user->image)
+                        <imgupload></imgupload>
+                    @else
+                        <imgupload v-bind:src="{{json_encode(asset('/uploads/images/' . $user->image ))}}"></imgupload>
+                    @endif
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
