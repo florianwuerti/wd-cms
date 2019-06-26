@@ -2,15 +2,18 @@
 
     <div class="img-upload-wrapper">
         <div class="image-input" v-on:click="chooseImage">
-            <span v-if="!imageData" class="placeholder">Set featured image</span>
-            <input id="image" name="image" class="img-file-input" ref="fileInput" type="file"
-                   v-on:input="onSelectFile">
+            <span v-if="!imageData"
+                  class="placeholder button is-info is-outlined is-fullwidth">Set featured image</span>
+            <input id="image" name="image" class="img-file-input" ref="fileInput" type="file" v-on:input="onSelectFile">
         </div>
         <div class="img-input-data-wrapper notification" v-if="imageData">
             <button type="button" class="delete" @click="removeImage"></button>
-            <img :src="imgSrc" class="img-input-data" alt=""/>
+            <img :src="imgSrc" class="img-input-data" alt="" @click="chooseImage"/>
         </div>
-        <button type="button" v-if="imageData" @click="chooseImage" class="button">Replace image</button>
+        <p v-if='imgSrc' class="has-text-weight-light is-size-7" id="set-post-thumbnail-desc">Click the image to edit or update</p>
+        <button type="button" v-if="imageData" @click="chooseImage" class="button is-info is-outlined is-fullwidth">
+            Replace image
+        </button>
     </div>
 
 </template>
@@ -23,7 +26,7 @@
 
         mounted() {
             // Do something useful with the data in the template
-            //console.log(this.src)
+            // console.log(this.imgSrc)
         },
 
         data: function () {
@@ -77,7 +80,6 @@
 </script>
 
 <style scoped>
-
 
 
 </style>

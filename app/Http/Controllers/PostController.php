@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -30,8 +31,8 @@ class PostController extends Controller {
 		$authUserPost = Post::where( 'author_id', $authUser->id );
 
 		$postsPublished = $this->showAllPublishedPosts();
-		$postsTrash   = $this->postsInTrash();
-		$postsDrafts  = $this->postsInDrafts();
+		$postsTrash     = $this->postsInTrash();
+		$postsDrafts    = $this->postsInDrafts();
 
 		return view( 'manage.posts.index', compact( 'posts', 'users', 'authUserPost', 'postsPublished', 'postsTrash', 'postsDrafts' ) );
 	}
@@ -42,6 +43,7 @@ class PostController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
+
 		return view( 'manage.posts.create' );
 	}
 
@@ -66,6 +68,7 @@ class PostController extends Controller {
 		$post->post_type    = 'posts';
 		$post->author_id    = Auth::user()->id;
 		$post->published_at = Carbon::now();
+
 
 		if ( $request->hasFile( 'post_thumbnail' ) ) {
 
@@ -113,7 +116,9 @@ class PostController extends Controller {
 
 		$post = Post::findOrFail( $id );
 
-		return view( 'manage.posts.edit', compact( 'post' ) );
+		$tags = $post->tags()->get()->pluck( 'name' );
+
+		return view( 'manage.posts.edit', compact( 'post', 'tags' ) );
 	}
 
 	/**
@@ -133,9 +138,11 @@ class PostController extends Controller {
 
 		] );
 
+
 		$post               = Post::findOrFail( $id );
 		$post->post_title   = $request->post_title;
 		$post->post_content = $request->post_content;
+
 
 		if ( $request->hasFile( 'image' ) ) {
 
@@ -151,8 +158,18 @@ class PostController extends Controller {
 			$post->post_thumbnail = $filename;
 		};
 
+
+		if ( $request->post_save_publish === 'post_save_publish' ) {
+			$post->post_status = '3';
+		}
+
+		if ( $request->post_save_draft === 'post_save_draft' ) {
+			$post->post_status = '1';
+		}
+
 		$post->save();
 
+		return redirect()->route( 'posts.edit', $post->id );
 
 	}
 
@@ -199,7 +216,7 @@ class PostController extends Controller {
 		$authUserPost = Post::where( 'author_id', $authUser->id );
 
 		$postsPublished = $this->showAllPublishedPosts();
-		$postsDrafts  = $this->postsInDrafts();
+		$postsDrafts    = $this->postsInDrafts();
 
 
 		return view( 'manage.posts.trash', compact( 'postsTrash', 'posts', 'authUserPost', 'postsPublished', 'postsDrafts' ) );
@@ -228,7 +245,7 @@ class PostController extends Controller {
 
 	public function toTrash( $id ) {
 
-		$post = Post::where('id',$id)->first();
+		$post = Post::where( 'id', $id )->first();
 
 		$post->delete();
 
@@ -265,6 +282,5 @@ class PostController extends Controller {
 		return $posts->drafts;
 
 	}
-
 
 }

@@ -10,11 +10,12 @@
             </div>
         </div>
         <hr class="m-t-0">
-        <div class="columns">
-            <div class="column">
-                <form action="{{route('posts.update', $post->id)}}" method="POST" enctype="multipart/form-data">
-                    {{method_field('PUT')}}
-                    {{csrf_field()}}
+
+        <form action="{{route('posts.update', $post->id)}}" method="POST" enctype="multipart/form-data">
+            {{method_field('PUT')}}
+            {{csrf_field()}}
+            <div class="columns">
+                <div class="column is-three-quarters-desktop is-three-quarters-tablet">
                     <div class="field">
                         <label for="post_title" class="label">Post Title:</label>
                         <div class="control">
@@ -31,15 +32,6 @@
                         </div>
                     </div><!-- end of post_content field -->
 
-                    <div class="field">
-                        <p class="label m-t-20">Post Thumbnail</p>
-                        @if(!$post->post_thumbnail)
-                            <imgupload></imgupload>
-                        @else
-                            <imgupload v-bind:src="{{json_encode(asset('/uploads/images/' . $post->post_thumbnail ))}}"></imgupload>
-                        @endif
-                    </div><!-- end of email field -->
-
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -50,13 +42,69 @@
                         </div><br/>
                     @endif
 
-                    <button class="button is-link is-pulled-right" style="width: 250px;"><i
-                                class="fas fa-save m-r-10"></i> Save Post
-                    </button>
-                </form>
-            </div>
-        </div>
+                </div><!-- end of .column.is-three-quarters -->
+                <div class="column is-one-quarter-desktop is-narrow-tablet">
+                    <div class="card card-widget">
+                        <div class="author-widget widget-area">
+                            <div class="selected-author">
+                                <img src="{{asset('/uploads/images/' . $post->author->image )}}"/>
+                                <div class="author">
+                                    <h4>{{$post->author->display_name}}</h4>
+                                    <p class="subtitle">
+                                        (Username)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-status-widget widget-area">
+                            <div class="status">
+                                <div class="status-icon">
+                                    <b-icon pack="fa" icon="file-text"></b-icon>
+                                </div>
+                                <div class="status-details">
+                                    <h4><span class="status-emphasis">Draft</span> Saved</h4>
+                                    <p>A Few Minutes Ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="publish-buttons-widget widget-area">
+                            <div class="secondary-action-button">
+                                <button type="submit" class="button is-info is-outlined is-fullwidth"
+                                        name="post_save_draft" value="post_save_draft">Save Draft
+                                </button>
+                            </div>
+                            <div class="primary-action-button">
+                                <button type="submit" class="button is-primary is-fullwidth" name="post_save_publish"
+                                        value="post_save_publish">Publish
+                                </button>
+                            </div>
+                        </div>
+                    </div> <!-- end of .column.is-one-quarters -->
 
+                    <div class="card card-widget m-t-20">
+                        <b-collapse class="card" aria-id="contentIdForA11y3">
+                            <div slot="trigger" slot-scope="props" class="card-header" role="button"
+                                 aria-controls="contentIdForA11y3">
+                                <p class="card-header-title">Tags</p>
+                                <a class="card-header-icon">
+                                    <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"></b-icon>
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <tags :value="{{$tags}}"></tags>
+                                </div>
+                            </div>
+                        </b-collapse>
+                    </div>
+
+                    <div class="card card-widget m-t-20" aria-id="contentIdForA11y3">
+                        <collapsecardthumbnail
+                                v-bind:src="{{json_encode(asset('/uploads/images/' . $post->post_thumbnail ))}}"></collapsecardthumbnail>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div> <!-- end of .flex-container -->
 
 @endsection

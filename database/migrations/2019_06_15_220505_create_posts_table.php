@@ -12,13 +12,13 @@ class CreatePostsTable extends Migration {
 	 */
 	public function up() {
 		Schema::create( 'posts', function ( Blueprint $table ) {
-			$table->bigIncrements( 'id' );
+			$table->increments( 'id' );
 			$table->string( 'post_title' );
 			$table->longText( 'post_content' );
 			$table->string( 'post_slug', '100' )->unique()->nullable();
 			$table->text( 'post_excerpt' )->nullable();
 			$table->string( 'post_thumbnail' )->nullable();
-			$table->unsignedBigInteger( 'author_id' );
+			$table->integer( 'author_id' )->unsigned();
 			$table->unsignedInteger( 'post_status' )->default( 1 );
 			$table->string( 'post_type' );
 			$table->bigInteger( 'comment_count' )->unsigned()->nullable();

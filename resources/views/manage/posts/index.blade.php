@@ -70,6 +70,7 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     @foreach($posts as $post)
 
                         <tr draggable="false" class=""><!----> <!---->
@@ -88,14 +89,14 @@
                             </td>
                             <td>
                             <span>
-                                <span class="tag">Tutorial</span>
-                                <span class="tag">Tips</span>
-                                <span class="tag">News</span>
+                                <span class="tag"></span>
                             </span>
                             </td>
                             <td>
                                 <span>
-                                    <span class="tag"></span>
+                                    @foreach($post->tags as $tags)
+                                        <span class="tag">{{$tags->name}}</span>
+                                    @endforeach
                                 </span>
                             </td>
                             <td class="has-text-centered">
@@ -111,9 +112,12 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="{{route('posts.edit', $post->id)}}" class=""><i class="fas fa-edit"></i><span class="is-hidden">Edit</span></a>
-                                <a href="{{route('posts.show', $post->id)}}" class=""><i class="far fa-eye"></i><span class="is-hidden">View</span></a>
-                                <a href="{{route('posts.totrash', $post->id)}}"><i class="far fa-trash-alt"></i><span class="is-hidden">Delete</span></a>
+                                <a href="{{route('posts.edit', $post->id)}}" class=""><i class="fas fa-edit"></i><span
+                                            class="is-hidden">Edit</span></a>
+                                <a href="{{route('posts.show', $post->id)}}" class=""><i class="far fa-eye"></i><span
+                                            class="is-hidden">View</span></a>
+                                <a href="{{route('posts.totrash', $post->id)}}"><i class="far fa-trash-alt"></i><span
+                                            class="is-hidden">Delete</span></a>
                             </td>
                         </tr>
                     @endforeach

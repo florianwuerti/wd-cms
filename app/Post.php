@@ -18,4 +18,10 @@ class post extends Model {
 			'display_name' => 'Guest Author'
 		] );
 	}
+
+
+	public function tags()
+	{
+		return $this->belongsToMany(Tag::class);
+}
 }
