@@ -15,8 +15,8 @@
             <li><a class="has-submenu {{Nav::hasSegment(['posts'], 2)}}">Posts</a>
                 <ul class="submenu">
                     <li><a href="{{route('posts.index')}}" class="{{Nav::isRoute('posts.index')}}">All Posts</a></li>
-                    <li><a href="{{route('posts.create')}}" class="{{Nav::isRoute('posts.create')}}">Add new Post</a>
-                    </li>
+                    <li><a href="{{route('posts.create')}}" class="{{Nav::isRoute('posts.create')}}">Add new Post</a></li>
+                    <li><a href="{{ route('tags.index')}}"class="Nav::isRoute('tags.index')">Tags</a></li>
                 </ul>
             </li>
             <li><a class="has-submenu" {{Nav::hasSegment(['pages'], 2)}}>Pages</a>

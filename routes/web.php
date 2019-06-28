@@ -37,7 +37,10 @@ Route::prefix( 'manage' )->group( function () {
 	Route::get( '/posts/{id}/trash', 'PostController@toTrash' )->name( 'posts.totrash' );
 	Route::get( '/posts/drafts', 'PostController@drafts' )->name( 'posts.drafst' );
 	Route::get( '/posts/trash', 'PostController@trash' )->name( 'posts.trash' );
-	Route::get( '/posts/published', 'PostController@published' )->name( 'posts.published' );
+    Route::get( '/posts/published', 'PostController@published' )->name( 'posts.published' );
+
+    // Tags
+    Route::resource( '/tags', 'TagController' );
 
 	// Post
 	Route::resource( '/posts', 'PostController' );

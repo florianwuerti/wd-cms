@@ -34,6 +34,7 @@ class PostController extends Controller {
 		$postsTrash     = $this->postsInTrash();
 		$postsDrafts    = $this->postsInDrafts();
 
+
 		return view( 'manage.posts.index', compact( 'posts', 'users', 'authUserPost', 'postsPublished', 'postsTrash', 'postsDrafts' ) );
 	}
 
@@ -142,6 +143,18 @@ class PostController extends Controller {
 		$post               = Post::findOrFail( $id );
 		$post->post_title   = $request->post_title;
 		$post->post_content = $request->post_content;
+
+
+		$tagNames = $request->tag;
+
+		// Create all tags (unassociet)
+		foreach ( $tagNames as $tagName ) {
+			Tag::firstOrCreate( [ 'name' => $tagName, 'slug' => str_slug( $tagName ) ] )->save();
+		}
+
+		// Once All tags are created we can query them
+		$tags = Tag::whereIn( 'name', $tagNames )->pluck( 'id' );
+		$post->tags()->sync( $tags );
 
 
 		if ( $request->hasFile( 'image' ) ) {

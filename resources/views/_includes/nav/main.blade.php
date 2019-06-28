@@ -1,7 +1,29 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="{{route('manage.dashboard')}}">
-            <img src="#" width="112" height="28">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 217.67 65.68" width="140">
+                <defs>
+                    <style>.cls-1 {
+                            fill: #083651;
+                        }
+
+                        .cls-2 {
+                            font-size: 59.77px;
+                            fill: #f6a028;
+                            font-family: FrutigerLTPro-Black, Frutiger LT Pro;
+                            font-weight: 800;
+                        }</style>
+                </defs>
+                <title>WD CMS Logo</title>
+                <g id="Ebene_2" data-name="Ebene 2">
+                    <g id="Ebene_1-2" data-name="Ebene 1">
+                        <path class="cls-1" d="M33.83,50.74,28.49,27.89h-.12l-6,22.85H9.7L0,19.16H11.4l5.09,22.73h.12l5.46-22.73H35.16L40.5,41.89h.12l5-22.73H56.14L46.5,50.74Z"/>
+                        <path class="cls-1" d="M84,50.74V45.1h-.12c-1.58,3.82-6.13,6.37-10.86,6.37-9.09,0-14.42-7.4-14.42-17.1,0-8.06,5-15.94,13.51-15.94,5.16,0,8.43,1.64,10.86,4.79h.12V5.27H94V50.74ZM83.12,35c0-4.73-2.61-8.24-6.73-8.24-3.82,0-6.55,3.21-6.55,7.82,0,5.09,2.55,8.48,6.61,8.48C80.21,43.1,83.12,39.53,83.12,35Z"/>
+                        <text class="cls-2" transform="translate(98.14 50.74)">cms</text>
+                    </g>
+                </g>
+            </svg>
+            <!--<img src="#" width="112" height="28">-->
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
