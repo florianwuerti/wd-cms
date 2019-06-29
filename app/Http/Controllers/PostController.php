@@ -9,7 +9,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Auth;
-use DB;
 
 //use User;
 
@@ -149,7 +148,9 @@ class PostController extends Controller {
 
 		// Create all tags (unassociet)
 		foreach ( $tagNames as $tagName ) {
-			Tag::firstOrCreate( [ 'name' => $tagName, 'slug' => str_slug( $tagName ) ] )->save();
+			$slug = Str::slug( $tagName );
+
+			Tag::firstOrCreate( [ 'name' => $tagName, 'slug' => $slug ] )->save();
 		}
 
 		// Once All tags are created we can query them
