@@ -153,13 +153,13 @@
 
       .status-icon {
         min-width: 50px;
+        display: flex;
+        align-self: center;
 
         .icon {
           width: 100%;
 
-          i {
-            text-align: center;
-          }
+          i {}
         }
       }
 

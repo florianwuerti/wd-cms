@@ -59,7 +59,7 @@
                         <div class="post-status-widget widget-area">
                             <div class="status">
                                 <div class="status-icon">
-                                    <b-icon pack="fa" icon="file-text"></b-icon>
+                                    <span class="icon is-large"><i class="fas fa-save fa-2x"></i></span>
                                 </div>
                                 <div class="status-details">
                                     <h4><span class="status-emphasis">Draft</span> Saved</h4>

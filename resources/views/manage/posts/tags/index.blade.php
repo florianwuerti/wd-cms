@@ -12,7 +12,7 @@
         <hr class="m-t-0">
 
         @if (session('status'))
-            <div class="notification notification-success is-primary">
+            <div class="notification notification-success is-info">
                 {{ session('status') }}
             </div>
         @endif
@@ -32,7 +32,8 @@
                     <div class="field">
                         <label for="tag_slug" class="label">Slug</label>
                         <div class="control">
-                            <input id="tag_slug" name="tag_slug" class="input" type="text" placeholder="Tag slug" value="{{ old('tag_slug') }}">
+                            <input id="tag_slug" name="tag_slug" class="input" type="text" placeholder="Tag slug"
+                                   value="{{ old('tag_slug') }}">
                             @if($errors->first('tag_slug'))
                                 <div class="alert alert-danger">
                                     <ul>
@@ -83,7 +84,12 @@
                                 <th class="">
                                     <div class="th-wrap">Count <span class="icon is-small" style="display: none;">
                                     <i class="mdi mdi-arrow-up"></i>
-                                </span>
+                                    </span>
+                                    </div>
+                                </th>
+                                <th class="">
+                                    <div class="th-wrap">Option
+                                        <i class="mdi mdi-arrow-up"></i>
                                     </div>
                                 </th>
                             </tr>
@@ -94,7 +100,9 @@
 
                                 <tr draggable="false" class=""><!----> <!---->
                                     <td>
-                                        <span>{{$tag->name}}</span>
+                                        <a href="{{route('tags.edit', $tag->id)}}">
+                                            <span>{{$tag->name}}</span>
+                                        </a>
                                     </td>
                                     <td>
                                         @if($tag->description)
@@ -107,7 +115,20 @@
                                         <span>{{$tag->slug}}</span>
                                     </td>
                                     <td>
-                                        <span>0</span>
+                                        <a href="#">
+                                            <span>{{$tag->posts->count()}}</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('tags.edit', $tag->id)}}" class="">
+                                            <i class="fas fa-edit"></i>
+                                            <span class="is-hidden">Edit</span>
+                                        </a>
+
+                                        <!--<a href="#" @click="showModal"><i class="far fa-trash-alt"></i>
+                                            <span class="is-hidden">Delete</span>
+                                        </a>-->
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -115,6 +136,9 @@
                         </table>
                     </div>
                 </div>
+
+                {{$tags->links('vendor.pagination.default')}}
+
             </div>
         </div>
     </div>

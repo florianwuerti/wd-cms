@@ -14,7 +14,7 @@ class TagController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$tags = Tag::all();
+		$tags = Tag::orderBy( 'name', 'asc' )->paginate( 20 );
 
 		return view( 'manage.posts.tags.index', compact( 'tags' ) );
 	}
@@ -46,7 +46,11 @@ class TagController extends Controller {
 		$tag       = new Tag();
 		$tag->name = $request->tag_name;
 
+		//$tag->description = $request->tag_description;
+
+
 		if ( empty( $request->tag_slug ) ) {
+
 			$tag->slug = Str::slug( $request->tag_name, '-' );
 
 		} else {
@@ -54,19 +58,21 @@ class TagController extends Controller {
 			$tag->slug = Str::slug( $request->tag_slug, '-' );
 		}
 
+		$tagSlugExists = Tag::where( 'slug', $tag->slug )->exists();
 
-		//$tag->description = $request->tag_description;
 
-		$slugs = Tag::where('slug' , $tag->slug);
+		if ( $tagSlugExists ) {
 
-		// Get the last matching slug
-		$lastSlug = $slugs->first();
+			$i = 1;
 
-		// Strip the number off of the last slug, if any
-		$lastSlugNumber = intval(str_replace($tag->slug . '-', '', $lastSlug));
+			$baseSlug = $tag->slug;
 
-		// Increment/append the counter and return the slug we generated
-		$tag->slug = $tag->slug . '-' . ($lastSlugNumber + 1);
+			while ( Tag::where( 'slug', $tag->slug )->exists() ) {
+
+				$tag->slug = $baseSlug . "-" . $i ++;
+
+			}
+		}
 
 
 		$tag->save();
@@ -83,10 +89,7 @@ class TagController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public
-	function show(
-		$id
-	) {
+	public function show( $id ) {
 		//
 	}
 
@@ -97,11 +100,11 @@ class TagController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public
-	function edit(
-		$id
-	) {
-		//
+	public function edit( $id ) {
+
+		$tag = Tag::findOrFail( $id );
+
+		return view( 'manage.posts.tags.edit', compact( 'tag' ) );
 	}
 
 	/**
@@ -112,10 +115,9 @@ class TagController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public
-	function update(
-		Request $request, $id
-	) {
+	public function update( Request $request, $id ) {
+
+		dd( $request );
 		//
 	}
 
@@ -126,10 +128,13 @@ class TagController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public
-	function destroy(
-		$id
-	) {
-		//
+	public function destroy( $id ) {
+
+		$tag = Tag::findOrFail( $id );
+
+		$tag->delete();
+
+		return redirect()->route( 'tags.index' )->with( 'status', 'Tag is deleted.' );;
+
 	}
 }
