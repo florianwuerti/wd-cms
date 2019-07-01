@@ -111,9 +111,8 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="{{route('posts.edit', $postTrash->id)}}" class=""><i class="fas fa-edit"></i><span class="is-hidden">Edit</span></a>
-                                <a href="{{route('posts.show', $postTrash->id)}}" class=""><i class="far fa-eye"></i><span class="is-hidden">View</span></a>
-                                <a href="{{route('posts.totrash', $postTrash->id)}}"><i class="fas fa-backspace"></i><span class="is-hidden">Delete</span></a>
+                                <a href="{{route('posts.restore', $postTrash->id)}}" class=""><i class="fas fa-trash-restore"></i><span class="is-hidden">Restore</span></a>
+                                <a href="{{route('posts.delete', $postTrash->id)}}"><i class="fas fa-ban"></i><span class="is-hidden">Delete</span></a>
                             </td>
                         </tr>
                     @endforeach

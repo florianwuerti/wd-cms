@@ -38,6 +38,8 @@ Route::prefix( 'manage' )->group( function () {
 	Route::get( '/posts/drafts', 'PostController@drafts' )->name( 'posts.drafst' );
 	Route::get( '/posts/trash', 'PostController@trash' )->name( 'posts.trash' );
     Route::get( '/posts/published', 'PostController@published' )->name( 'posts.published' );
+	Route::get( '/posts/{id}/delete', 'PostController@delete' )->name( 'posts.delete' );
+	Route::get( '/posts/{id}/restore', 'PostController@restore' )->name( 'posts.restore' );
 
     // Tags
     Route::resource( '/tags', 'TagController' );

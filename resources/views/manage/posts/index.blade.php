@@ -9,8 +9,9 @@
                 <h1 class="title">Manage Posts</h1>
             </div>
             <div class="column">
-                <a href="{{route('posts.create')}}" class="button is-primary is-pulled-right"><i
-                            class="fa fa-user-plus m-r-10"></i> Create New Post</a>
+                <a href="{{route('posts.create')}}" class="button is-primary is-pulled-right">
+                    <i class="fas fa-newspaper m-r-10"></i> Create New Post
+                </a>
             </div>
         </div>
         <hr class="m-t-0">
@@ -71,38 +72,39 @@
                     </thead>
                     <tbody>
 
-                    @foreach($posts as $post)
+                    @if(count($posts) >= 1)
+                        @foreach($posts as $post)
 
-                        <tr draggable="false" class=""><!----> <!---->
-                            <td class="">
-                                <a href="{{route('posts.edit', $post->id)}}">
-                                    <span>{{$post->post_title}}</span>
+                            <tr draggable="false" class=""><!----> <!---->
+                                <td class="">
+                                    <a href="{{route('posts.edit', $post->id)}}">
+                                        <span>{{$post->post_title}}</span>
 
-                                    @if($post->post_status == 1)
-                                        <span class="tag is-dark">Draft</span>
-                                    @endif
+                                        @if($post->post_status == 1)
+                                            <span class="tag is-dark">Draft</span>
+                                        @endif
 
-                                </a>
-                            </td>
-                            <td>
-                                <span>{{$post->author->display_name}}</span>
-                            </td>
-                            <td>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span>{{$post->author->display_name}}</span>
+                                </td>
+                                <td>
                             <span>
                                 <span class="tag"></span>
                             </span>
-                            </td>
-                            <td>
+                                </td>
+                                <td>
                                 <span>
                                     @foreach($post->tags as $tags)
                                         <span class="tag">{{$tags->name}}</span>
                                     @endforeach
                                 </span>
-                            </td>
-                            <td class="has-text-centered">
-                                <span>0</span>
-                            </td>
-                            <td data-label="Date">
+                                </td>
+                                <td class="has-text-centered">
+                                    <span>0</span>
+                                </td>
+                                <td data-label="Date">
                                 <span>
                                     @if($post->post_status === 1 ? 'entwurf' : '')
                                         <span>Published <br> 2019/04/10 <br> 8:42:56 pm</span>
@@ -110,17 +112,27 @@
                                         <span>Last Modified <br> 2019/04/04 <br> 8:20:41 am</span>
                                     @endif
                                 </span>
-                            </td>
-                            <td>
-                                <a href="{{route('posts.edit', $post->id)}}" class=""><i class="fas fa-edit"></i><span
-                                            class="is-hidden">Edit</span></a>
-                                <a href="{{route('posts.show', $post->id)}}" class=""><i class="far fa-eye"></i><span
-                                            class="is-hidden">View</span></a>
-                                <a href="{{route('posts.totrash', $post->id)}}"><i class="far fa-trash-alt"></i><span
-                                            class="is-hidden">Delete</span></a>
+                                </td>
+                                <td>
+                                    <a href="{{route('posts.edit', $post->id)}}" class="">
+                                        <i class="fas fa-edit"></i><span class="is-hidden">Edit</span>
+                                    </a>
+                                    <a href="{{route('posts.show', $post->id)}}" class="">
+                                        <i class="far fa-eye"></i><span class="is-hidden">View</span>
+                                    </a>
+                                    <a href="{{route('posts.totrash', $post->id)}}"><i class="far fa-trash-alt"></i>
+                                        <span class="is-hidden">Delete</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr draggable="false" class=""><!----> <!---->
+                            <td class="">
+                                <p>No posts found.</p>
                             </td>
                         </tr>
-                    @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>

@@ -26,9 +26,7 @@
 
     export default {
         name: "tags",
-        props: [
-            'value'
-        ],
+        props: ['value'],
 
         data() {
             return {

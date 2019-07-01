@@ -11,9 +11,16 @@
         </div>
         <hr class="m-t-0">
 
+        @if (session('status'))
+            <div class="notification notification-success is-info">
+                {{ session('status') }}
+            </div>
+        @endif
+
         <form action="{{route('posts.update', $post->id)}}" method="POST" enctype="multipart/form-data">
             {{method_field('PUT')}}
             {{csrf_field()}}
+
             <div class="columns">
                 <div class="column is-three-quarters-desktop is-three-quarters-tablet">
                     <div class="field">
@@ -62,22 +69,45 @@
                                     <span class="icon is-large"><i class="fas fa-save fa-2x"></i></span>
                                 </div>
                                 <div class="status-details">
-                                    <h4><span class="status-emphasis">Draft</span> Saved</h4>
-                                    <p>A Few Minutes Ago</p>
+                                    <h4><span class="status-emphasis">Pblished</span></h4>
+                                    <p>{{Carbon\Carbon::parse($post->published_at)->format('D d, M. Y g:i A')}}</p>
+                                    <h4><span class="status-emphasis">Updated</span></h4>
+                                    <p>{{Carbon\Carbon::parse($post->updated_at)->diffForHumans()}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="publish-buttons-widget widget-area">
-                            <div class="secondary-action-button">
-                                <button type="submit" class="button is-info is-outlined is-fullwidth"
-                                        name="post_save_draft" value="post_save_draft">Save Draft
-                                </button>
-                            </div>
-                            <div class="primary-action-button">
-                                <button type="submit" class="button is-primary is-fullwidth" name="post_save_publish"
-                                        value="post_save_publish">Publish
-                                </button>
-                            </div>
+                            @if($post->post_status == 1)
+                                <div class="secondary-action-button">
+                                    <button type="submit" class="button is-info is-outlined is-fullwidth"
+                                            name="post_save_draft" value="post_save_draft">Save Draft
+                                    </button>
+                                </div>
+                                <div class="primary-action-button">
+                                    <button type="submit" class="button is-primary is-fullwidth"
+                                            name="post_save_publish"
+                                            value="post_save_publish">Publish
+                                    </button>
+                                </div>
+                            @elseif($post->post_status == 3)
+                                <div class="secondary-action-button">
+                                    <button type="submit" class="button is-primary"
+                                            name="post_save_updated" value="post_save_updated">Save Updated
+                                    </button>
+                                </div>
+                            @else
+                                <div class="secondary-action-button">
+                                    <button type="submit" class="button is-primary"
+                                            name="post_save_draft" value="post_save_draft">Save Updated
+                                    </button>
+                                </div>
+                                <div class="primary-action-button">
+                                    <button type="submit" class="button is-primary is-fullwidth"
+                                            name="post_save_publish"
+                                            value="post_save_publish">Publish
+                                    </button>
+                                </div>
+                            @endif
                         </div>
                     </div> <!-- end of .column.is-one-quarters -->
 

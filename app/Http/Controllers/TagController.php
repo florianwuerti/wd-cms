@@ -134,7 +134,7 @@ class TagController extends Controller {
 
 		$tag->delete();
 
-		return redirect()->route( 'tags.index' )->with( 'status', 'Tag is deleted.' );;
+		return redirect()->route( 'tags.index' )->with( 'status', 'Tag is deleted.' );
 
 	}
 }

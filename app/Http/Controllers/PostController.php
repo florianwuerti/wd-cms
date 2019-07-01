@@ -7,6 +7,7 @@ use App\Tag;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 use Auth;
 
@@ -44,7 +45,9 @@ class PostController extends Controller {
 	 */
 	public function create() {
 
-		return view( 'manage.posts.create' );
+		$tags = [];
+
+		return view( 'manage.posts.create', compact( 'tags' ) );
 	}
 
 	/**
@@ -143,22 +146,25 @@ class PostController extends Controller {
 		$post->post_title   = $request->post_title;
 		$post->post_content = $request->post_content;
 
+		if ( $request->tag > 0 ) {
+			$tagNames = $request->tag;
 
-		$tagNames = $request->tag;
+			// Create all tags (unassociet)
+			foreach ( $tagNames as $tagName ) {
+				$slug = Str::slug( $tagName );
 
-		// Create all tags (unassociet)
-		foreach ( $tagNames as $tagName ) {
-			$slug = Str::slug( $tagName );
+				Tag::firstOrCreate( [ 'name' => $tagName, 'slug' => $slug ] )->save();
+			}
 
-			Tag::firstOrCreate( [ 'name' => $tagName, 'slug' => $slug ] )->save();
+			// Once All tags are created we can query them
+			$tags = Tag::whereIn( 'name', $tagNames )->pluck( 'id' );
+			$post->tags()->sync( $tags );
 		}
-
-		// Once All tags are created we can query them
-		$tags = Tag::whereIn( 'name', $tagNames )->pluck( 'id' );
-		$post->tags()->sync( $tags );
 
 
 		if ( $request->hasFile( 'image' ) ) {
+
+			dd( $request->image );
 
 			// Get image file
 			$image = $request->file( 'image' );
@@ -183,7 +189,7 @@ class PostController extends Controller {
 
 		$post->save();
 
-		return redirect()->route( 'posts.edit', $post->id );
+		return redirect()->route( 'posts.edit', $post->id )->with( 'status', 'Post is saved.' );
 
 	}
 
@@ -196,7 +202,21 @@ class PostController extends Controller {
 	 */
 	public function destroy( $id ) {
 
-		//
+		$post = Post::findOrFail( $id );
+		dd( $post );
+		$post->delete();
+
+		return redirect()->route( 'posts.index' )->with( 'status', 'Post is deleted.' );
+
+	}
+
+	public function delete( $id ) {
+
+		$post = Post::withTrashed()->where( 'id', $id );
+
+		$post->forceDelete();
+
+		return redirect()->route( 'posts.index' )->with( 'status', 'Post is deleted.' );
 
 	}
 
@@ -234,6 +254,15 @@ class PostController extends Controller {
 
 
 		return view( 'manage.posts.trash', compact( 'postsTrash', 'posts', 'authUserPost', 'postsPublished', 'postsDrafts' ) );
+
+	}
+
+	public function restore( $id ) {
+
+		$post = Post::withTrashed()->where( 'id', $id );
+		$post->restore();
+
+		return redirect()->route( 'posts.index' )->with( 'status', 'Post is restored.' );
 
 	}
 
