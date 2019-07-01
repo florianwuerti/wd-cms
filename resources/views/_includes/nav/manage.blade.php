@@ -16,6 +16,7 @@
                 <ul class="submenu">
                     <li><a href="{{route('posts.index')}}" class="{{Nav::isRoute('posts.index')}}">All Posts</a></li>
                     <li><a href="{{route('posts.create')}}" class="{{Nav::isRoute('posts.create')}}">Add new Post</a></li>
+                    <li><a href="{{ route('categories.index')}}"class="Nav::isRoute('categories.index')">Categories</a></li>
                     <li><a href="{{ route('tags.index')}}"class="Nav::isRoute('tags.index')">Tags</a></li>
                 </ul>
             </li>

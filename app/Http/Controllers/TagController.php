@@ -78,7 +78,7 @@ class TagController extends Controller {
 		$tag->save();
 
 
-		return redirect()->route( 'tags.index' )->with( 'status', 'New tag saved.' );;
+		return redirect()->route( 'tags.index' )->with( 'status', 'New tag saved.' );
 
 	}
 
@@ -117,8 +117,51 @@ class TagController extends Controller {
 	 */
 	public function update( Request $request, $id ) {
 
-		dd( $request );
-		//
+		$validatedData = $request->validate( [
+			'tag_name' => 'required|min:2|max:255',
+			//'tag_description' => 'max:255'
+		] );
+
+		$tag              = Tag::find( $id );
+		$tag->name        = $request->tag_name;
+		$tag->description = $request->tag_description;
+
+
+		if ( $tag->slug !== $request->tag_slug ) {
+
+			if ( empty( $request->tag_slug ) ) {
+
+				$tag->slug = Str::slug( $request->tag_name, '-' );
+
+			} else {
+
+				$tag->slug = Str::slug( $request->tag_slug, '-' );
+			}
+
+
+			$tagSlugExists = Tag::where( 'slug', $tag->slug )->exists();
+
+
+			if ( $tagSlugExists ) {
+
+				$i = 1;
+
+				$baseSlug = $tag->slug;
+
+				while ( Tag::where( 'slug', $tag->slug )->exists() ) {
+
+					$tag->slug = $baseSlug . "-" . $i ++;
+
+				}
+			}
+
+		}
+
+
+		$tag->save();
+
+
+		return redirect()->route( 'tags.index' )->with( 'status', 'New tag saved.' );
 	}
 
 	/**
