@@ -88,6 +88,30 @@
                                 </b-collapse>
                             </div>
 
+                            <div class="card card-widget m-t-20">
+                                <b-collapse class="card" aria-id="contentIdForA11y3">
+                                    <div slot="trigger" slot-scope="props" class="card-header" role="button"
+                                         aria-controls="contentIdForA11y3">
+                                        <p class="card-header-title">Categories</p>
+                                        <a class="card-header-icon">
+                                            <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"></b-icon>
+                                        </a>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="content">
+                                            <input type="hidden" name="categories" :value="rolesSelected" {{old('rolesSelected')}}/>
+
+                                            @foreach ($categories as $category)
+                                                <div class="field">
+                                                    <b-checkbox v-model="rolesSelected"
+                                                                :native-value="{{$category->id}}">{{$category->name}}</b-checkbox>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </b-collapse>
+                            </div>
+
                             <div class="card card-widget m-t-20" aria-id="contentIdForA11y3">
                                 <collapsecardthumbnail></collapsecardthumbnail>
                             </div>
@@ -98,5 +122,18 @@
         </div>
 
     </div> <!-- end of .flex-container -->
+
+@endsection
+
+@section('scripts')
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                rolesSelected: '',
+            }
+        });
+    </script>
 
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Tag;
 use App\User;
+use App\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -46,8 +47,9 @@ class PostController extends Controller {
 	public function create() {
 
 		$tags = [];
+		$categories = Category::all();
 
-		return view( 'manage.posts.create', compact( 'tags' ) );
+		return view( 'manage.posts.create', compact( 'tags', 'categories' ) );
 	}
 
 	/**
@@ -121,7 +123,9 @@ class PostController extends Controller {
 
 		$tags = $post->tags()->get()->pluck( 'name' );
 
-		return view( 'manage.posts.edit', compact( 'post', 'tags' ) );
+		$categories = Category::all();
+
+		return view( 'manage.posts.edit', compact( 'post', 'tags', 'categories' ) );
 	}
 
 	/**
@@ -141,10 +145,12 @@ class PostController extends Controller {
 
 		] );
 
-
 		$post               = Post::findOrFail( $id );
 		$post->post_title   = $request->post_title;
 		$post->post_content = $request->post_content;
+		$inputCategories = explode(',', $request->categories);
+
+		dd($request->tag);
 
 		if ( $request->tag > 0 ) {
 			$tagNames = $request->tag;
@@ -160,6 +166,9 @@ class PostController extends Controller {
 			$tags = Tag::whereIn( 'name', $tagNames )->pluck( 'id' );
 			$post->tags()->sync( $tags );
 		}
+
+
+		$post->categories()->sync( $inputCategories );
 
 
 		if ( $request->hasFile( 'image' ) ) {
