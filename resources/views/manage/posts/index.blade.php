@@ -108,10 +108,10 @@
                                 </td>
                                 <td data-label="Date">
                                 <span>
-                                    @if($post->post_status === 1 ? 'entwurf' : '')
-                                        <span>Published <br> 2019/04/10 <br> 8:42:56 pm</span>
+                                    @if($post->updated_at)
+                                        <span>Published <br> {{Carbon\Carbon::parse($post->published_at)->format('Y/m/d')}} <br> {{Carbon\Carbon::parse($post->published_at)->format('g:i:s a')}}</span>
                                     @else
-                                        <span>Last Modified <br> 2019/04/04 <br> 8:20:41 am</span>
+                                        <span>Last Modified <br> {{Carbon\Carbon::parse($post->updated_at)->format('Y/m/d')}} <br> {{Carbon\Carbon::parse($post->updated_at)->format('g:i:s a')}}</span>
                                     @endif
                                 </span>
                                 </td>
