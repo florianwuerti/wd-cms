@@ -150,8 +150,6 @@ class PostController extends Controller {
 		$post->post_content = $request->post_content;
 		$inputCategories = explode(',', $request->categories);
 
-		dd($request->tag);
-
 		if ( $request->tag > 0 ) {
 			$tagNames = $request->tag;
 
@@ -173,7 +171,6 @@ class PostController extends Controller {
 
 		if ( $request->hasFile( 'image' ) ) {
 
-			dd( $request->image );
 
 			// Get image file
 			$image = $request->file( 'image' );
@@ -212,7 +209,7 @@ class PostController extends Controller {
 	public function destroy( $id ) {
 
 		$post = Post::findOrFail( $id );
-		dd( $post );
+
 		$post->delete();
 
 		return redirect()->route( 'posts.index' )->with( 'status', 'Post is deleted.' );

@@ -90,16 +90,18 @@
                                     <span>{{$post->author->display_name}}</span>
                                 </td>
                                 <td>
-                            <span>
-                                <span class="tag"></span>
-                            </span>
+                                    <span>
+                                        @foreach($post->categories as $cats)
+                                            <span class="tag">{{$cats->name}}</span>
+                                        @endforeach
+                                    </span>
                                 </td>
                                 <td>
-                                <span>
-                                    @foreach($post->tags as $tags)
-                                        <span class="tag">{{$tags->name}}</span>
-                                    @endforeach
-                                </span>
+                                    <span>
+                                        @foreach($post->tags as $tags)
+                                            <span class="tag">{{$tags->name}}</span>
+                                        @endforeach
+                                    </span>
                                 </td>
                                 <td class="has-text-centered">
                                     <span>0</span>
