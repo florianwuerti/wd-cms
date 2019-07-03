@@ -32,10 +32,9 @@
                     </div><!-- end of post_title field -->
 
                     <div class="field">
-                        <label for="post_content" class="label">Post Content:</label>
+                        <label for="post_content" class="label">Laraberg Post Content:</label>
                         <div class="control">
-                            <textarea class="textarea" name="post_content" id="post_content" placeholder="Post Content"
-                                      rows="10">{{$post->post_content}}</textarea>
+                            <textarea id="laraberg" name="post_content" hidden>{{$post->post_content}}</textarea>
                         </div>
                     </div><!-- end of post_content field -->
 
@@ -139,7 +138,8 @@
                             </div>
                             <div class="card-content">
                                 <div class="content">
-                                    <input type="hidden" name="categories" :value="rolesSelected" {{old('rolesSelected')}}/>
+                                    <input type="hidden" name="categories"
+                                           :value="rolesSelected" {{old('rolesSelected')}}/>
 
                                     @foreach ($categories as $category)
                                         <div class="field">
@@ -173,6 +173,8 @@
                 rolesSelected: {!! $post->categories->pluck('id') !!}
             }
         });
+
+        Laraberg.init('laraberg', {sidebar: true, laravelFilemanager: true})
     </script>
 
 @endsection

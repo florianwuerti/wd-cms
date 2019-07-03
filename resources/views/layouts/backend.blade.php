@@ -15,6 +15,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app-backend.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('vendor/laraberg/css/laraberg.css')}}">
+
+
 </head>
 <body>
 
@@ -30,6 +33,11 @@
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="https://unpkg.com/react@16.6.3/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.6.3/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/moment@2.22.1/min/moment.min.js"></script>
+
+<script src="{{ asset('vendor/laraberg/js/laraberg.js') }}"></script>
 
 @yield('scripts')
 

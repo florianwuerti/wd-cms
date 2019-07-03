@@ -18208,47 +18208,47 @@ label.panel-block:hover {
   opacity: 0.5;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check {
   border-color: #00d1b2;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-white {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-white {
   border-color: white;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-black {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-black {
   border-color: #0a0a0a;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-light {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-light {
   border-color: whitesmoke;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-dark {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-dark {
   border-color: #363636;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-primary {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-primary {
   border-color: #00d1b2;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-link {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-link {
   border-color: #3273dc;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-info {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-info {
   border-color: #209cee;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-success {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-success {
   border-color: #23d160;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-warning {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-warning {
   border-color: #ffdd57;
 }
 
-.b-checkbox.checkbox:hover input[type=checkbox] + .check.is-danger {
+.b-checkbox.checkbox:hover input[type=checkbox]:not(:disabled) + .check.is-danger {
   border-color: #ff3860;
 }
 
@@ -18493,6 +18493,15 @@ label.panel-block:hover {
 .b-clockpicker .dropdown-content {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.b-clockpicker .card {
+  border-radius: 4px;
+}
+
+.b-clockpicker .card-header {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .b-clockpicker .card-content {
@@ -18804,6 +18813,10 @@ label.panel-block:hover {
   color: #fff;
 }
 
+.datepicker .datepicker-table .datepicker-body .datepicker-cell.is-nearby:not(.is-selected) {
+  color: #b5b5b5;
+}
+
 .datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell {
   padding: 0.3rem 0.75rem 0.75rem;
 }
@@ -19076,10 +19089,6 @@ label.panel-block:hover {
   }
 }
 
-.label {
-  font-weight: 600;
-}
-
 .field.is-grouped .field {
   flex-shrink: 0;
 }
@@ -19117,6 +19126,136 @@ label.panel-block:hover {
 .taginput .field.has-addons .control .control .taginput-container.is-focusable,
 .field.has-addons .control .control .select select {
   border-radius: 0;
+}
+
+.field.is-floating-label {
+  position: relative;
+}
+
+.field.is-floating-label .label {
+  position: absolute;
+  top: -0.775em;
+  left: 1em;
+  font-size: calc(1rem * 3 / 4);
+  background-color: transparent;
+  padding-left: 0.125em;
+  padding-right: 0.125em;
+  z-index: 5;
+}
+
+.field.is-floating-label .label:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.775em;
+  left: 0;
+  right: 0;
+  height: 0.375em;
+  background-color: #fff;
+  z-index: -1;
+}
+
+.field.is-floating-label .label.is-small {
+  font-size: calc(0.75rem * 3 / 4);
+}
+
+.field.is-floating-label .label.is-medium {
+  font-size: calc(1.25rem * 3 / 4);
+}
+
+.field.is-floating-label .label.is-large {
+  font-size: calc(1.5rem * 3 / 4);
+}
+
+.field.is-floating-label .input:focus,
+.field.is-floating-label .taginput .taginput-container.is-focusable:focus,
+.taginput .field.is-floating-label .taginput-container.is-focusable:focus,
+.field.is-floating-label .textarea:focus,
+.field.is-floating-label .select select:focus {
+  box-shadow: none;
+}
+
+.field.is-floating-label .taginput .taginput-container.is-focusable {
+  padding-top: 0.475em;
+}
+
+.field.is-floating-label .taginput .taginput-container.is-focusable.is-focused {
+  box-shadow: none;
+}
+
+.field.is-floating-in-label {
+  position: relative;
+}
+
+.field.is-floating-in-label .label {
+  position: absolute;
+  top: 0.25em;
+  left: 1em;
+  font-size: calc(1rem * 3 / 4);
+  background-color: transparent;
+  z-index: 5;
+}
+
+.field.is-floating-in-label .label.is-small {
+  font-size: calc(0.75rem * 3 / 4);
+}
+
+.field.is-floating-in-label .label.is-medium {
+  font-size: calc(1.25rem * 3 / 4);
+}
+
+.field.is-floating-in-label .label.is-large {
+  font-size: calc(1.5rem * 3 / 4);
+}
+
+.field.is-floating-in-label > .datepicker .input,
+.field.is-floating-in-label > .datepicker .taginput .taginput-container.is-focusable,
+.taginput .field.is-floating-in-label > .datepicker .taginput-container.is-focusable,
+.field.is-floating-in-label > .timepicker .input,
+.field.is-floating-in-label > .timepicker .taginput .taginput-container.is-focusable,
+.taginput .field.is-floating-in-label > .timepicker .taginput-container.is-focusable {
+  padding-top: calc(3.25em / 2 - (1.5rem * 3 / 4) / 2);
+  padding-bottom: 1px;
+  height: 3.25em;
+}
+
+.field.is-floating-in-label > :not(.datepicker):not(.timepicker):not(.taginput) .input,
+.field.is-floating-in-label > :not(.datepicker):not(.timepicker):not(.taginput) .taginput .taginput-container.is-focusable,
+.taginput .field.is-floating-in-label > :not(.datepicker):not(.timepicker):not(.taginput) .taginput-container.is-focusable,
+.field.is-floating-in-label > :not(.datepicker):not(.timepicker):not(.taginput) .textarea,
+.field.is-floating-in-label > :not(.datepicker):not(.timepicker):not(.taginput) select {
+  padding-top: calc(3.25em / 2 - (1.5rem * 3 / 4) / 2);
+  padding-bottom: 1px;
+  height: 3.25em;
+}
+
+.field.is-floating-in-label > :not(.datepicker):not(.timepicker):not(.taginput) .select:not(multiple) {
+  height: 3.25em;
+}
+
+.field.is-floating-in-label > :not(.datepicker):not(.timepicker):not(.taginput) .select:not(multiple).is-loading::after {
+  margin-top: calc(3.25em / 2 - (1.5rem * 3 / 4) / 2);
+}
+
+.field.is-floating-in-label > :not(.datepicker):not(.timepicker):not(.taginput) .select:not(multiple)::after {
+  margin-top: 1px;
+}
+
+.field.is-floating-in-label > :not(.taginput) .is-left.icon,
+.field.is-floating-in-label > :not(.taginput) .is-right.icon {
+  height: 3.25em;
+}
+
+.field.is-floating-in-label > :not(.taginput) .is-left.icon {
+  padding-top: calc(3.25em / 2 - (1.5rem * 3 / 4) / 2);
+}
+
+.field.is-floating-in-label .control.is-loading::after {
+  margin-top: calc(3.25em / 2 - (1.5rem * 3 / 4) / 2);
+}
+
+.field.is-floating-in-label .taginput .taginput-container.is-focusable {
+  padding-top: calc(3.25em / 2 - (1.5rem * 3 / 4) / 2 + (0.275em - 1px));
 }
 
 .control .help.counter {
@@ -19219,6 +19358,15 @@ label.panel-block:hover {
 .notification > .delete {
   right: 0.5rem !important;
   top: 0.5rem !important;
+}
+
+.modal.is-full-screen .animation-content,
+.modal.is-full-screen .modal-card {
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  margin: 0;
+  background-color: #ffffff;
 }
 
 .modal .animation-content {
@@ -19671,47 +19819,47 @@ label.panel-block:hover {
   opacity: 0.5;
 }
 
-.b-radio.radio:hover input[type=radio] + .check {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check {
   border-color: #00d1b2;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-white {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-white {
   border-color: white;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-black {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-black {
   border-color: #0a0a0a;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-light {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-light {
   border-color: whitesmoke;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-dark {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-dark {
   border-color: #363636;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-primary {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-primary {
   border-color: #00d1b2;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-link {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-link {
   border-color: #3273dc;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-info {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-info {
   border-color: #209cee;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-success {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-success {
   border-color: #23d160;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-warning {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-warning {
   border-color: #ffdd57;
 }
 
-.b-radio.radio:hover input[type=radio] + .check.is-danger {
+.b-radio.radio:hover input[type=radio]:not(:disabled) + .check.is-danger {
   border-color: #ff3860;
 }
 
@@ -19800,6 +19948,543 @@ label.panel-block:hover {
 .select.is-empty select {
   color: rgba(122, 122, 122, 0.7);
 }
+
+/*
+This project is based on
+"bulma-steps" (https://github.com/Wikiki/bulma-steps) by
+Wikiki (https://github.com/Wikiki) licensed under
+MIT (https://github.com/Wikiki/bulma-steps/blob/master/LICENSE)
+*/
+
+.b-steps .steps {
+  font-size: 1rem;
+  min-height: 2rem;
+}
+
+.b-steps .steps .step-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.b-steps .steps .step-items .step-item {
+  margin-top: 0;
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.b-steps .steps .step-items .step-item .step-link {
+  color: #4a4a4a;
+}
+
+.b-steps .steps .step-items .step-item .step-link:not(.is-clickable) {
+  cursor: not-allowed;
+}
+
+.b-steps .steps .step-items .step-item .step-marker {
+  align-items: center;
+  display: flex;
+  border-radius: 50%;
+  font-weight: 700;
+  justify-content: center;
+  background: #b5b5b5;
+  color: white;
+  border: 0.2em solid #fff;
+  z-index: 1;
+}
+
+.b-steps .steps .step-items .step-item.is-white::before {
+  background: linear-gradient(to left, #dbdbdb 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-white.is-active .step-marker {
+  background-color: white;
+  border-color: white;
+  color: white;
+}
+
+.b-steps .steps .step-items .step-item.is-white.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-white.is-completed .step-marker {
+  color: #0a0a0a;
+  background-color: white;
+}
+
+.b-steps .steps .step-items .step-item.is-white.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-black::before {
+  background: linear-gradient(to left, #dbdbdb 50%, #0a0a0a 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-black.is-active .step-marker {
+  background-color: white;
+  border-color: #0a0a0a;
+  color: #0a0a0a;
+}
+
+.b-steps .steps .step-items .step-item.is-black.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-black.is-completed .step-marker {
+  color: white;
+  background-color: #0a0a0a;
+}
+
+.b-steps .steps .step-items .step-item.is-black.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-light::before {
+  background: linear-gradient(to left, #dbdbdb 50%, whitesmoke 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-light.is-active .step-marker {
+  background-color: white;
+  border-color: whitesmoke;
+  color: whitesmoke;
+}
+
+.b-steps .steps .step-items .step-item.is-light.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-light.is-completed .step-marker {
+  color: #363636;
+  background-color: whitesmoke;
+}
+
+.b-steps .steps .step-items .step-item.is-light.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-dark::before {
+  background: linear-gradient(to left, #dbdbdb 50%, #363636 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-dark.is-active .step-marker {
+  background-color: white;
+  border-color: #363636;
+  color: #363636;
+}
+
+.b-steps .steps .step-items .step-item.is-dark.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-dark.is-completed .step-marker {
+  color: whitesmoke;
+  background-color: #363636;
+}
+
+.b-steps .steps .step-items .step-item.is-dark.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-primary::before {
+  background: linear-gradient(to left, #dbdbdb 50%, #00d1b2 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-primary.is-active .step-marker {
+  background-color: white;
+  border-color: #00d1b2;
+  color: #00d1b2;
+}
+
+.b-steps .steps .step-items .step-item.is-primary.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-primary.is-completed .step-marker {
+  color: #fff;
+  background-color: #00d1b2;
+}
+
+.b-steps .steps .step-items .step-item.is-primary.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-link::before {
+  background: linear-gradient(to left, #dbdbdb 50%, #3273dc 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-link.is-active .step-marker {
+  background-color: white;
+  border-color: #3273dc;
+  color: #3273dc;
+}
+
+.b-steps .steps .step-items .step-item.is-link.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-link.is-completed .step-marker {
+  color: #fff;
+  background-color: #3273dc;
+}
+
+.b-steps .steps .step-items .step-item.is-link.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-info::before {
+  background: linear-gradient(to left, #dbdbdb 50%, #209cee 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-info.is-active .step-marker {
+  background-color: white;
+  border-color: #209cee;
+  color: #209cee;
+}
+
+.b-steps .steps .step-items .step-item.is-info.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-info.is-completed .step-marker {
+  color: #fff;
+  background-color: #209cee;
+}
+
+.b-steps .steps .step-items .step-item.is-info.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-success::before {
+  background: linear-gradient(to left, #dbdbdb 50%, #23d160 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-success.is-active .step-marker {
+  background-color: white;
+  border-color: #23d160;
+  color: #23d160;
+}
+
+.b-steps .steps .step-items .step-item.is-success.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-success.is-completed .step-marker {
+  color: #fff;
+  background-color: #23d160;
+}
+
+.b-steps .steps .step-items .step-item.is-success.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-warning::before {
+  background: linear-gradient(to left, #dbdbdb 50%, #ffdd57 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-warning.is-active .step-marker {
+  background-color: white;
+  border-color: #ffdd57;
+  color: #ffdd57;
+}
+
+.b-steps .steps .step-items .step-item.is-warning.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-warning.is-completed .step-marker {
+  color: rgba(0, 0, 0, 0.7);
+  background-color: #ffdd57;
+}
+
+.b-steps .steps .step-items .step-item.is-warning.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-danger::before {
+  background: linear-gradient(to left, #dbdbdb 50%, #ff3860 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-danger.is-active .step-marker {
+  background-color: white;
+  border-color: #ff3860;
+  color: #ff3860;
+}
+
+.b-steps .steps .step-items .step-item.is-danger.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-danger.is-completed .step-marker {
+  color: #fff;
+  background-color: #ff3860;
+}
+
+.b-steps .steps .step-items .step-item.is-danger.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item .step-marker {
+  color: white;
+}
+
+.b-steps .steps .step-items .step-item .step-details {
+  text-align: center;
+}
+
+.b-steps .steps .step-items .step-item:not(:first-child) {
+  flex-basis: 1em;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.b-steps .steps .step-items .step-item:not(:first-child)::before {
+  content: " ";
+  display: block;
+  position: absolute;
+}
+
+.b-steps .steps .step-items .step-item::before {
+  background: linear-gradient(to left, #dbdbdb 50%, #00d1b2 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-active .step-link {
+  cursor: default;
+}
+
+.b-steps .steps .step-items .step-item.is-active .step-marker {
+  background-color: white;
+  border-color: #00d1b2;
+  color: #00d1b2;
+}
+
+.b-steps .steps .step-items .step-item.is-active::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps .step-items .step-item.is-completed .step-marker {
+  color: white;
+  background-color: #00d1b2;
+}
+
+.b-steps .steps .step-items .step-item.is-completed::before {
+  background-position: left bottom;
+}
+
+.b-steps .steps + .step-content {
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.b-steps .steps + .step-content .step-item {
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.b-steps .steps + .step-content.is-transitioning {
+  overflow: hidden;
+}
+
+.b-steps .steps .step-items .step-item .step-marker {
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  left: calc(50% - 1rem);
+}
+
+.b-steps .steps .step-items .step-item .step-marker .icon *,
+.b-steps .steps .step-items .step-item .step-marker .icon *:before {
+  font-size: 1rem;
+}
+
+.b-steps .steps .step-items .step-item .step-details {
+  margin-top: 2rem;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  padding-top: 0.2em;
+}
+
+.b-steps .steps .step-items .step-item .step-details .step-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.b-steps .steps .step-items .step-item:not(:first-child)::before {
+  height: 0.2em;
+  width: 100%;
+  bottom: 0;
+  left: -50%;
+  top: 1rem;
+}
+
+.b-steps .steps.is-small {
+  font-size: 0.75rem;
+  min-height: 1.5rem;
+}
+
+.b-steps .steps.is-small .step-items .step-item .step-marker {
+  height: 1.5rem;
+  width: 1.5rem;
+  position: absolute;
+  left: calc(50% - 0.75rem);
+}
+
+.b-steps .steps.is-small .step-items .step-item .step-marker .icon *,
+.b-steps .steps.is-small .step-items .step-item .step-marker .icon *:before {
+  font-size: 0.75rem;
+}
+
+.b-steps .steps.is-small .step-items .step-item .step-details {
+  margin-top: 1.5rem;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  padding-top: 0.2em;
+}
+
+.b-steps .steps.is-small .step-items .step-item .step-details .step-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.b-steps .steps.is-small .step-items .step-item:not(:first-child)::before {
+  height: 0.2em;
+  width: 100%;
+  bottom: 0;
+  left: -50%;
+  top: 0.75rem;
+}
+
+.b-steps .steps.is-medium {
+  font-size: 1.25rem;
+  min-height: 2.5rem;
+}
+
+.b-steps .steps.is-medium .step-items .step-item .step-marker {
+  height: 2.5rem;
+  width: 2.5rem;
+  position: absolute;
+  left: calc(50% - 1.25rem);
+}
+
+.b-steps .steps.is-medium .step-items .step-item .step-marker .icon *,
+.b-steps .steps.is-medium .step-items .step-item .step-marker .icon *:before {
+  font-size: 1.25rem;
+}
+
+.b-steps .steps.is-medium .step-items .step-item .step-details {
+  margin-top: 2.5rem;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  padding-top: 0.2em;
+}
+
+.b-steps .steps.is-medium .step-items .step-item .step-details .step-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.b-steps .steps.is-medium .step-items .step-item:not(:first-child)::before {
+  height: 0.2em;
+  width: 100%;
+  bottom: 0;
+  left: -50%;
+  top: 1.25rem;
+}
+
+.b-steps .steps.is-large {
+  font-size: 1.5rem;
+  min-height: 3rem;
+}
+
+.b-steps .steps.is-large .step-items .step-item .step-marker {
+  height: 3rem;
+  width: 3rem;
+  position: absolute;
+  left: calc(50% - 1.5rem);
+}
+
+.b-steps .steps.is-large .step-items .step-item .step-marker .icon *,
+.b-steps .steps.is-large .step-items .step-item .step-marker .icon *:before {
+  font-size: 1.5rem;
+}
+
+.b-steps .steps.is-large .step-items .step-item .step-details {
+  margin-top: 3rem;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  padding-top: 0.2em;
+}
+
+.b-steps .steps.is-large .step-items .step-item .step-details .step-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.b-steps .steps.is-large .step-items .step-item:not(:first-child)::before {
+  height: 0.2em;
+  width: 100%;
+  bottom: 0;
+  left: -50%;
+  top: 1.5rem;
+}
+
+/*.b-tabs {
+    .tabs {
+        margin-bottom: 0;
+        flex-shrink: 0;
+        li {
+            &.is-disabled {
+                pointer-events: none;
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+        }
+    }
+    .tab-content {
+        position: relative;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        .tab-item {
+            flex-shrink: 0;
+            flex-basis: auto;
+        }
+        &.is-transitioning {
+            overflow: hidden;
+        }
+    }
+    &:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+    &.is-fullwidth {
+        width: 100%;
+    }
+}*/
 
 .switch {
   cursor: pointer;
@@ -20296,6 +20981,7 @@ label.panel-block:hover {
 .taginput .taginput-container.is-focusable {
   padding-bottom: 0;
   padding-top: calc(0.275em - 1px);
+  padding-left: 0;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -20320,7 +21006,7 @@ label.panel-block:hover {
 
 .taginput .taginput-container > .tag:not(:last-child),
 .taginput .taginput-container > .tags:not(:last-child) {
-  margin-right: 0.275rem;
+  margin-left: 0.275rem;
 }
 
 .taginput .taginput-container .autocomplete {

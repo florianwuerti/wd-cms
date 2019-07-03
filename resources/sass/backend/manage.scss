@@ -159,7 +159,8 @@
         .icon {
           width: 100%;
 
-          i {}
+          i {
+          }
         }
       }
 
@@ -191,4 +192,8 @@
       margin: 0 5px;
     }
   }
+}
+
+.gutenberg__editor {
+  background-color: $white;
 }
