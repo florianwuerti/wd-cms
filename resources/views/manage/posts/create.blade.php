@@ -131,7 +131,7 @@
         var app = new Vue({
             el: '#app',
             data: {
-                rolesSelected: '',
+                rolesSelected: []
             }
         });
     </script>

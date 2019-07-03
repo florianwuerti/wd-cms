@@ -9,9 +9,6 @@ class post extends Model {
 
 	use SoftDeletes;
 
-//	protected $dates = ['deleted_at'];
-
-
 	public function author() {
 
 		return $this->belongsTo( User::Class )->withDefault( [

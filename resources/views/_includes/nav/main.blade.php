@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="{{route('manage.dashboard')}}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 217.67 65.68" width="140">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 217.67 65.68" width="100">
                 <defs>
                     <style>.cls-1 {
                             fill: #083651;
@@ -40,6 +40,10 @@
                 <a class="navbar-item is-tab is-active">Learn</a>
                 <a class="navbar-item is-tab">Discuss</a>
                 <a class="navbar-item is-tab">Share</a>
+            </div> <!-- end of .navbar-start -->
+            @else
+            <div class="navbar-start m-l-10">
+                <a href="{{route('home')}}" class="navbar-item is-tab is-active"><i class="fas fa-home m-r-10"></i>@yield('site_title', 'CMS Web Application')</a>
             </div> <!-- end of .navbar-start -->
         @endguest
 

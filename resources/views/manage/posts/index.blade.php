@@ -108,7 +108,7 @@
                                 </td>
                                 <td data-label="Date">
                                 <span>
-                                    @if($post->updated_at)
+                                        @if(!$post->updated_at)
                                         <span>Published <br> {{Carbon\Carbon::parse($post->published_at)->format('Y/m/d')}} <br> {{Carbon\Carbon::parse($post->published_at)->format('g:i:s a')}}</span>
                                     @else
                                         <span>Last Modified <br> {{Carbon\Carbon::parse($post->updated_at)->format('Y/m/d')}} <br> {{Carbon\Carbon::parse($post->updated_at)->format('g:i:s a')}}</span>
