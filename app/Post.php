@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use VanOns\Laraberg\Models\Gutenbergable;
 
 class post extends Model {
 
 	use SoftDeletes;
+	use Gutenbergable;
 
 	public function author() {
 

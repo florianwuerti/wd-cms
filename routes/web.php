@@ -13,7 +13,7 @@
 
 //Auth::routes();
 
-Route::get( '/', 'PageController@index' )->name( 'home' );
+Route::get( '/', 'HomeController@index' )->name( 'home' );
 Route::get( '/login', 'ManageController@login' )->name( 'login' );
 
 Route::get( 'password/reset/{token}', 'Auth\ResetPasswordController@getReset' );

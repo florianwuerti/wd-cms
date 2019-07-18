@@ -46,7 +46,7 @@ class PostController extends Controller {
 	 */
 	public function create() {
 
-		$tags = [];
+		$tags       = [];
 		$categories = Category::all();
 
 		return view( 'manage.posts.create', compact( 'tags', 'categories' ) );
@@ -146,10 +146,10 @@ class PostController extends Controller {
 
 		] );
 
-		$post               = Post::findOrFail( $id );
-		$post->post_title   = $request->post_title;
-		$post->post_content = $request->post_content;
-		$inputCategories = explode(',', $request->categories);
+		$post             = Post::findOrFail( $id );
+		$post->post_title = $request->post_title;
+		$post->lb_content = $request->post_content;
+		$inputCategories  = explode( ',', $request->categories );
 
 		if ( $request->tag > 0 ) {
 			$tagNames = $request->tag;
@@ -196,7 +196,7 @@ class PostController extends Controller {
 
 		$post->save();
 
-		return redirect()->route( 'posts.edit', $post->id )->with( 'status', 'Post is saved.' );
+		return redirect()->route( 'posts.show', $post->id )->with( 'status', 'Post is saved.' );
 
 	}
 
