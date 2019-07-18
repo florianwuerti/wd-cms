@@ -14,4 +14,8 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app-frontend.scss', 'public/css')
     .sass('resources/sass/app-backend.scss', 'public/css')
-    .browserSync('127.0.0.1');
+    .browserSync({
+        proxy: 'https://wd-cms.lab',
+        host: 'wd-cms.lab',
+        open: false
+    });

@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Tag;
 
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 
 class TagController extends Controller {
 	/**

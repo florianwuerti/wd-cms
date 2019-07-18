@@ -23,7 +23,7 @@
 
 @include('_includes.nav.main')
 
-@include('_includes.nav.manage')
+@include('_includes.nav.backend.manage')
 <div class="management-area" id="app">
 
     <main>

@@ -17,8 +17,10 @@
                 <title>WD CMS Logo</title>
                 <g id="Ebene_2" data-name="Ebene 2">
                     <g id="Ebene_1-2" data-name="Ebene 1">
-                        <path class="cls-1" d="M33.83,50.74,28.49,27.89h-.12l-6,22.85H9.7L0,19.16H11.4l5.09,22.73h.12l5.46-22.73H35.16L40.5,41.89h.12l5-22.73H56.14L46.5,50.74Z"/>
-                        <path class="cls-1" d="M84,50.74V45.1h-.12c-1.58,3.82-6.13,6.37-10.86,6.37-9.09,0-14.42-7.4-14.42-17.1,0-8.06,5-15.94,13.51-15.94,5.16,0,8.43,1.64,10.86,4.79h.12V5.27H94V50.74ZM83.12,35c0-4.73-2.61-8.24-6.73-8.24-3.82,0-6.55,3.21-6.55,7.82,0,5.09,2.55,8.48,6.61,8.48C80.21,43.1,83.12,39.53,83.12,35Z"/>
+                        <path class="cls-1"
+                              d="M33.83,50.74,28.49,27.89h-.12l-6,22.85H9.7L0,19.16H11.4l5.09,22.73h.12l5.46-22.73H35.16L40.5,41.89h.12l5-22.73H56.14L46.5,50.74Z"/>
+                        <path class="cls-1"
+                              d="M84,50.74V45.1h-.12c-1.58,3.82-6.13,6.37-10.86,6.37-9.09,0-14.42-7.4-14.42-17.1,0-8.06,5-15.94,13.51-15.94,5.16,0,8.43,1.64,10.86,4.79h.12V5.27H94V50.74ZM83.12,35c0-4.73-2.61-8.24-6.73-8.24-3.82,0-6.55,3.21-6.55,7.82,0,5.09,2.55,8.48,6.61,8.48C80.21,43.1,83.12,39.53,83.12,35Z"/>
                         <text class="cls-2" transform="translate(98.14 50.74)">cms</text>
                     </g>
                 </g>
@@ -35,23 +37,20 @@
     </div>
 
     <div class="navbar-menu">
-        @guest
-            <div class="navbar-start">
-                <a class="navbar-item is-tab is-active">Learn</a>
-                <a class="navbar-item is-tab">Discuss</a>
-                <a class="navbar-item is-tab">Share</a>
-            </div> <!-- end of .navbar-start -->
-            @else
-            <div class="navbar-start m-l-10">
-                <a href="{{route('home')}}" class="navbar-item is-tab is-active"><i class="fas fa-home m-r-10"></i>@yield('site_title', 'CMS Web Application')</a>
-            </div> <!-- end of .navbar-start -->
-        @endguest
 
-        <div class="navbar-end nav-menu" style="overflow: visible">
-            @guest
-                <a href="{{route('login')}}" class="navbar-item is-tab">Login</a>
-                <a href="{{route('register')}}" class="navbar-item is-tab">Join the Community</a>
-            @else
+        <ul>
+            @foreach($pages as $page)
+
+
+                <li id="page-{{$loop->iteration}}">
+                    <a href="{{$page->page_slug}}">{{$page->page_title}}</a>
+                </li>
+            @endforeach
+        </ul>
+        <!-- end of .navbar-start -->
+
+        @auth()
+            <div class="navbar-end nav-menu" style="overflow: visible">
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                         @if(Auth::user()->image)
@@ -72,7 +71,7 @@
                         <!--@//include('_includes.forms.logout')-->
                     </div>
                 </div>
-            @endguest
-        </div>
+            </div>
+        @endauth
     </div>
 </nav>

@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use Auth;
 use Carbon\Carbon;
 use Hash;
-use Illuminate\Http\Request;
 use App\User;
 use Session;
 use Intervention\Image\ImageManagerStatic as Image;
