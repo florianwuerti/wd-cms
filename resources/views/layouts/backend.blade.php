@@ -21,7 +21,7 @@
 </head>
 <body>
 
-@include('_includes.nav.main')
+@include('_includes.nav.backend.main')
 
 @include('_includes.nav.backend.manage')
 <div class="management-area" id="app">

@@ -11,7 +11,7 @@
 |
 */
 
-//Auth::routes();
+###### Frontend Routes ######
 
 Route::get( '/', 'Frontend\PageController@start' )->name( 'home' );
 Route::get( '/login', 'Backend\ManageController@login' )->name( 'login' );
@@ -19,11 +19,17 @@ Route::get( '/login', 'Backend\ManageController@login' )->name( 'login' );
 Route::get( 'password/reset/{token}', 'Auth\ResetPasswordController@getReset' );
 Route::post( 'password/reset', 'Auth\ResetPasswordController@postReset' )->name( 'password.request' );
 
-// Post
-//Route::get( '/posts/{id}', 'PostController@show' )->name('post.show');
+// Pages
+Route::get( '{pages}', 'Frontend\PageController@getPages' )->name('frontend.pages');
+Route::get( '{page}', 'Frontend\PageController@getPage' )->name('frontend.page');
+
+//Posts
+Route::get( 'blog/{post}', 'Frontend\PostController@getPost' )->name('frontend.posts.single');
+
+
+###### Backend Routes ######
 
 Auth::routes();
-
 
 Route::prefix( 'manage' )->group( function () {
 
@@ -34,12 +40,12 @@ Route::prefix( 'manage' )->group( function () {
 	// User
 	Route::resource( '/users', 'Backend\UserController' );
 
-	Route::get( '/posts/{id}/trash', 'Backend\PostController@toTrash' )->name( 'posts.totrash' );
-	Route::get( '/posts/drafts', 'Backend\PostController@drafts' )->name( 'posts.drafst' );
-	Route::get( '/posts/trash', 'Backend\PostController@trash' )->name( 'posts.trash' );
-	Route::get( '/posts/published', 'Backend\PoBackendControllers/stController@published' )->name( 'posts.published' );
-	Route::get( '/posts/{id}/delete', 'PostController@delete' )->name( 'posts.delete' );
-	Route::get( '/posts/{id}/restore', 'Backend\PostController@restore' )->name( 'posts.restore' );
+	Route::get( '/posts/{id}/trash', 'Backend\PostController@toTrash' )->name( 'manage.posts.totrash' );
+	Route::get( '/posts/drafts', 'Backend\PostController@drafts' )->name( 'manage.posts.drafst' );
+	Route::get( '/posts/trash', 'Backend\PostController@trash' )->name( 'manage.posts.trash' );
+	Route::get( '/posts/published', 'Backend\PostController@published' )->name( 'manage.posts.published' );
+	Route::get( '/posts/{id}/delete', 'Backend\PostController@delete' )->name( 'manage.posts.delete' );
+	Route::get( '/posts/{id}/restore', 'Backend\PostController@restore' )->name( 'manage.posts.restore' );
 
 	// Tags
 	Route::resource( '/tags', 'Backend\TagController' );
@@ -52,5 +58,11 @@ Route::prefix( 'manage' )->group( function () {
 
 	// Pages
 	Route::resource( '/pages', 'Backend\PageController' );
+	Route::get( '/pages/{id}/trash', 'Backend\PageController@toTrash' )->name( 'manage.pages.totrash' );
+	Route::get( '/pages/drafts', 'Backend\PageController@drafts' )->name( 'manage.pages.drafst' );
+	Route::get( '/pages/trash', 'Backend\PageController@trash' )->name( 'manage.pages.trash' );
+	Route::get( '/pages/published', 'Backend\PageController@published' )->name( 'manage.pages.published' );
+
+	Route::get( '/pages/{id}/trash', 'Backend\PageController@toTrash' )->name( 'manage.pages.totrash' );
 
 } );

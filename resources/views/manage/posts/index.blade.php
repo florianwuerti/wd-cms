@@ -16,7 +16,7 @@
         </div>
         <hr class="m-t-0">
 
-        @include('_includes.nav.table-nav-list')
+        @include('_includes.nav.backend.table-nav-list')
 
         <div class="b-table"><!---->
             <div class="table-wrapper">
@@ -119,10 +119,10 @@
                                     <a href="{{route('posts.edit', $post->id)}}" class="">
                                         <i class="fas fa-edit"></i><span class="is-hidden">Edit</span>
                                     </a>
-                                    <a href="{{route('posts.show', $post->id)}}" class="">
+                                    <a href="{{route('frontend.posts.single', $post->post_slug)}}" class="">
                                         <i class="far fa-eye"></i><span class="is-hidden">View</span>
                                     </a>
-                                    <a href="{{route('posts.totrash', $post->id)}}"><i class="far fa-trash-alt"></i>
+                                    <a href="{{route('manage.posts.totrash', $post->id)}}"><i class="far fa-trash-alt"></i>
                                         <span class="is-hidden">Delete</span>
                                     </a>
                                 </td>

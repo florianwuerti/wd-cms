@@ -37,41 +37,32 @@
     </div>
 
     <div class="navbar-menu">
+        <div class="navbar-start m-l-10">
+            <a href="{{route('home')}}" class="navbar-item is-tab"><i
+                        class="fas fa-home m-r-10"></i>@yield('site_title', 'CMS Web Application')</a>
+        </div> <!-- end of .navbar-start -->
 
-        <ul>
-            @foreach($pages as $page)
-
-                <li id="page-{{$loop->iteration}}">
-                    <a href="{{route('frontend.page', $page->page_slug)}}">{{$page->page_title}}</a>
-                </li>
-
-            @endforeach
-        </ul>
-        <!-- end of .navbar-start -->
-
-        @auth()
-            <div class="navbar-end nav-menu" style="overflow: visible">
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        @if(Auth::user()->image)
-                            <img src="{{asset('/uploads/images/'. Auth::user()->image)}}" class="m-r-5 is-rounded"
-                                 alt=""/>
-                        @endif
-                        {{Auth::user()->first_name}}
-                    </a>
-                    <div class="navbar-dropdown is-right">
-                        <a href="{{route('users.show' , Auth::user()->id)}}" class="navbar-item"><span class="icon"><i
-                                        class="fa fa-fw fa-user-circle-o m-r-5"></i></span>Profile</a>
-                        <a href="#" class="navbar-item"><span class="icon"><i class="fa fa-fw fa-bell m-r-5"></i></span>Notifications</a>
-                        <a href="{{route('manage.dashboard')}}" class="navbar-item"><span class="icon"><i
-                                        class="fa fa-fw fa-cog m-r-5"></i></span>Manage</a>
-                        <hr class="navbar-divider">
-                        <a href="{{route('manage.logout')}}" class="navbar-item"><span class="icon"><i
-                                        class="fa fa-fw fa-sign-out m-r-5"></i></span>Logout</a>
-                        <!--@//include('_includes.forms.logout')-->
-                    </div>
+        <div class="navbar-end nav-menu" style="overflow: visible">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    @if(Auth::user()->image)
+                        <img src="{{asset('/uploads/images/'. Auth::user()->image)}}" class="m-r-5 is-rounded"
+                             alt=""/>
+                    @endif
+                    {{Auth::user()->first_name}}
+                </a>
+                <div class="navbar-dropdown is-right">
+                    <a href="{{route('users.show' , Auth::user()->id)}}" class="navbar-item"><span class="icon"><i
+                                    class="fa fa-fw fa-user-circle-o m-r-5"></i></span>Profile</a>
+                    <a href="#" class="navbar-item"><span class="icon"><i class="fa fa-fw fa-bell m-r-5"></i></span>Notifications</a>
+                    <a href="{{route('manage.dashboard')}}" class="navbar-item"><span class="icon"><i
+                                    class="fa fa-fw fa-cog m-r-5"></i></span>Manage</a>
+                    <hr class="navbar-divider">
+                    <a href="{{route('manage.logout')}}" class="navbar-item"><span class="icon"><i
+                                    class="fa fa-fw fa-sign-out m-r-5"></i></span>Logout</a>
+                    <!--@//include('_includes.forms.logout')-->
                 </div>
             </div>
-        @endauth
+        </div>
     </div>
 </nav>

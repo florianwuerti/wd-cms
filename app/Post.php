@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use VanOns\Laraberg\Models\Gutenbergable;
 
-class post extends Model {
+class Post extends Model {
 
 	use SoftDeletes;
 	use Gutenbergable;

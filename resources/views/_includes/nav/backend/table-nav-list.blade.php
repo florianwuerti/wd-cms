@@ -18,19 +18,19 @@
 
 		@if($postsPublished->count())
 		<li class="publish">
-			<a href="{{route('posts.published')}}">Published <span class="count">({{$postsPublished->count()}})</span></a> |
+			<a href="{{route('manage.posts.published')}}">Published <span class="count">({{$postsPublished->count()}})</span></a> |
 		</li>
 		@endif
 
 		@if($postsDrafts->count())
 		<li class="publish">
-			<a href="{{route('posts.drafst')}}">Drafts <span class="count">({{$postsDrafts->count()}})</span></a> |
+			<a href="{{route('manage.posts.drafst')}}">Drafts <span class="count">({{$postsDrafts->count()}})</span></a> |
 		</li>
 		@endif
 
 		@if($postsTrash->count())
 		<li class="publish">
-			<a href="{{route('posts.trash')}}">Trash <span class="count">({{$postsTrash->count()}})</span></a> |
+			<a href="{{route('manage.posts.trash')}}">Trash <span class="count">({{$postsTrash->count()}})</span></a> |
 		</li>
 		@endif
 

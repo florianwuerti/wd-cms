@@ -45,4 +45,10 @@ class User extends Authenticatable {
 
 	}
 
+	public function pages() {
+
+		return $this->hasMany( Page::Class );
+
+	}
+
 }
