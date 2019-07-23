@@ -68,4 +68,8 @@ Route::prefix( 'manage' )->group( function () {
 
 	Route::get( '/pages/{id}/trash', 'Backend\PageController@toTrash' )->name( 'manage.pages.totrash' );
 
+	// Settings
+	Route::get('/settings', 'Backend\SettingController@index')->name('settings');
+	Route::post('/settings', 'Backend\SettingController@store')->name('settings.store');
+
 } );

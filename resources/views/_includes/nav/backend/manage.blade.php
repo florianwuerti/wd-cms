@@ -54,7 +54,7 @@
             <li>
                 <a class="has-submenu ">Settings</a>
                 <ul class="submenu">
-                    <li><a href="#" class="">General</a></li>
+                    <li><a href="{{route('settings')}}" class="">General</a></li>
                 </ul>
             </li>
         </ul>
