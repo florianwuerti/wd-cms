@@ -13,7 +13,7 @@ class PageController extends Controller {
 
 	public function start() {
 
-		$pages = Page::where( 'page_status', 3 )->get();
+		$pages = Page::where( 'page_status', 3 )->orderBy('menu_order', 'desc')->get();
 
 
 		return view( 'frontend.pages.home', compact( 'pages' ) );
@@ -23,7 +23,9 @@ class PageController extends Controller {
 
 		$page = Page::where( 'page_slug', $slug )->firstOrFail();
 
-		$pages = Page::where( 'page_status', 3 )->get();
+		$pages = Page::where( 'page_status', 3 )->orderBy('menu_order', 'desc')->get();
+
+	//	dd($pages);
 
 		$posts = Post::where( 'post_status', 3 )->get();
 

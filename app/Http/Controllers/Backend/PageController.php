@@ -49,6 +49,7 @@ class PageController extends Controller {
 
 		$validatedData = $request->validate( [
 			'page_title'     => 'required|min:4|max:255',
+			'menu_order'     => 'numeric',
 			'page_thumbnail' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
 		] );
 
@@ -57,6 +58,7 @@ class PageController extends Controller {
 		$page->page_content = $request->page_content;
 		$page->author_id    = Auth::user()->id;
 		$page->published_at = Carbon::now();
+		$page->menu_order   = $request->page_order;
 
 
 		if ( empty( $request->page_slug ) ) {
@@ -147,6 +149,7 @@ class PageController extends Controller {
 
 		$validatedData = $request->validate( [
 			'page_title' => 'required|max:255',
+			'menu_order' => 'numeric',
 			'image'      => 'image|mimes:jpeg,png,jpg,svg|max:2048'
 
 		] );
@@ -154,7 +157,7 @@ class PageController extends Controller {
 		$page               = Page::findOrFail( $id );
 		$page->page_title   = $request->page_title;
 		$page->page_content = $request->page_content;
-
+		$page->menu_order   = $request->page_order;
 
 		if ( $request->hasFile( 'image' ) ) {
 

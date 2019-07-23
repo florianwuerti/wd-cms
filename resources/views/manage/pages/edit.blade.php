@@ -108,10 +108,36 @@
                             @endif
                         </div>
                     </div> <!-- end of .column.is-one-quarters -->
-
+                    <div class="card card-widget m-t-20">
+                        <div class="collapse card">
+                            <div class="collapse-trigger">
+                                <div role="button" aria-controls="contentIdForA11y3" class="card-header">
+                                    <p class="card-header-title">Page Attributes</p>
+                                    <a class="card-header-icon">
+                                        <span class="icon"><i class="mdi mdi-menu-down mdi-24px"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="contentIdForA11y3" aria-expanded="true" class="collapse-content">
+                                <div class="card-content">
+                                    <div class="content">
+                                        <div class="field is-horizontal">
+                                            <div class="control">
+                                                <div class="field">
+                                                    <label for="page_order" class="label">Order</label>
+                                                    <input class="input m-b-5" name="page_order" type="number"
+                                                           value="{{$page->menu_order}}" min="0">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card card-widget m-t-20" aria-id="contentIdForA11y3">
                         <collapsecardthumbnail
-                                v-bind:src="{{json_encode(asset('/uploads/images/' . $page->pages_thumbnail ))}}"></collapsecardthumbnail>
+                                v-bind:src="{{json_encode(asset('/uploads/images/' . $page->page_thumbnail ))}}"></collapsecardthumbnail>
                     </div>
                 </div>
             </div>
@@ -124,8 +150,14 @@
 @section('scripts')
 
     <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                rolesSelected: false,
+            }
+        });
 
-        Laraberg.init('laraberg', {sidebar: false, laravelFilemanager: true})
+        Laraberg.init('laraberg', { sidebar: true, laravelFilemanager: true })
     </script>
 
 @endsection
