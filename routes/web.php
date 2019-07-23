@@ -14,7 +14,7 @@
 ###### Frontend Routes ######
 
 Route::get( '/', 'Frontend\PageController@start' )->name( 'home' );
-Route::get( '/login', 'Backend\ManageController@login' )->name( 'login' );
+Route::get( 'login', 'Backend\ManageController@login' )->name( 'login' );
 
 Route::get( 'password/reset/{token}', 'Auth\ResetPasswordController@getReset' );
 Route::post( 'password/reset', 'Auth\ResetPasswordController@postReset' )->name( 'password.request' );
@@ -25,6 +25,9 @@ Route::get( '{page}', 'Frontend\PageController@getPage' )->name('frontend.page')
 
 //Posts
 Route::get( 'blog/{post}', 'Frontend\PostController@getPost' )->name('frontend.posts.single');
+
+// Contact
+Route::post( 'contact', 'Backend\MailController@sendContactToAdmin' )->name('frontend.contact.sendMassage');
 
 
 ###### Backend Routes ######

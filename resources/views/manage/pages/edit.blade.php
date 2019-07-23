@@ -34,7 +34,7 @@
                     <div class="field">
                         <label for="page_content" class="label">Page Content:</label>
                         <div class="control">
-                            <textarea id="laraberg" name="page_content" hidden>{{$page->page_content}}</textarea>
+                            <textarea id="laraberg" name="page_content" hidden>{{$page->lb_raw_content}}</textarea>
                         </div>
                     </div><!-- end of post_content field -->
 

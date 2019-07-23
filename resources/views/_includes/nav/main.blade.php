@@ -1,6 +1,6 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="{{route('manage.dashboard')}}">
+        <a class="navbar-item m-r-100" href="{{url('/')}}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 217.67 65.68" width="100">
                 <defs>
                     <style>.cls-1 {
@@ -25,7 +25,6 @@
                     </g>
                 </g>
             </svg>
-            <!--<img src="#" width="112" height="28">-->
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -36,18 +35,15 @@
         </a>
     </div>
 
-    <div class="navbar-menu">
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
 
-        <ul>
             @foreach($pages as $page)
-
-                <li id="page-{{$loop->iteration}}">
-                    <a href="{{route('frontend.page', $page->page_slug)}}">{{$page->page_title}}</a>
-                </li>
-
+                <a href="{{route('frontend.page', $page->page_slug)}}"
+                   id="page-{{$loop->iteration}}" class="navbar-item">{{$page->page_title}}</a>
             @endforeach
-        </ul>
-        <!-- end of .navbar-start -->
+
+        </div>
 
         @auth()
             <div class="navbar-end nav-menu" style="overflow: visible">

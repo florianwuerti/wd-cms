@@ -55,7 +55,7 @@ class PageController extends Controller {
 
 		$page               = new Page();
 		$page->page_title   = $request->page_title;
-		$page->page_content = $request->page_content;
+		$page->lb_content   = $request->page_content;
 		$page->author_id    = Auth::user()->id;
 		$page->published_at = Carbon::now();
 		$page->menu_order   = $request->page_order;
@@ -154,10 +154,10 @@ class PageController extends Controller {
 
 		] );
 
-		$page               = Page::findOrFail( $id );
-		$page->page_title   = $request->page_title;
-		$page->page_content = $request->page_content;
-		$page->menu_order   = $request->page_order;
+		$page             = Page::findOrFail( $id );
+		$page->page_title = $request->page_title;
+		$page->lb_content = $request->page_content;
+		$page->menu_order = $request->page_order;
 
 		if ( $request->hasFile( 'image' ) ) {
 
