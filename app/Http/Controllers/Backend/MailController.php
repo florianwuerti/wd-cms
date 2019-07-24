@@ -33,12 +33,12 @@ class MailController extends Controller {
 		Mail::send( '_includes.mail.contact', $data, function ( $message ) use ( $data ) {
 
 			$message->from( $data['email'] );
-			$message->to( 'office@wdigital.ch' );
+			$message->to( setting( 'from_email' ) );
 			$message->subject( $data['subject'] );
 
 		} );
 
-		$this->sendContactToAuthor($request);
+		$this->sendContactToAuthor( $request );
 
 		Session::flash( 'success', 'Your Email was Sent!' );
 
@@ -46,7 +46,7 @@ class MailController extends Controller {
 
 	}
 
-	public function sendContactToAuthor($request ) {
+	public function sendContactToAuthor( $request ) {
 
 		$this->validate( $request, [
 			'firstname' => 'required|max:255',
@@ -69,7 +69,7 @@ class MailController extends Controller {
 
 		Mail::send( '_includes.mail.contact-copy', $data, function ( $message ) use ( $data ) {
 
-			$message->from( 'office@wdigital.ch' );
+			$message->from( setting( 'from_email' ) );
 			$message->to( $data['email'] );
 			$message->subject( $data['subject'] );
 

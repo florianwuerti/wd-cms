@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('page_title', '') - {{setting('app_name')}}</title>
+    <title>@yield('page_title', '') - {{ config('appsettings.site_name', 'WDCMS Starter') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

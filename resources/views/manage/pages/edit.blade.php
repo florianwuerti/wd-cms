@@ -108,7 +108,7 @@
                             @endif
                         </div>
                     </div> <!-- end of .column.is-one-quarters -->
-                    <div class="card card-widget m-t-20">
+                    <div class="card card-widget m-t-20" aria-id="contentIdForA11y3">
                         <div class="collapse card">
                             <div class="collapse-trigger">
                                 <div role="button" aria-controls="contentIdForA11y3" class="card-header">
